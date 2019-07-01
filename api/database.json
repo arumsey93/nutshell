@@ -7,6 +7,12 @@
       "password": "password"
     },
     {
+      "username": "Bobob",
+      "email": "mob@mob.com",
+      "password": "mobob",
+      "id": 3
+    },
+    {
       "username": "Bob",
       "email": "bob@bob.com",
       "password": "bobob",

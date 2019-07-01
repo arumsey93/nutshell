@@ -13,13 +13,24 @@ getValues().then(array => {
 function logIn() {
   document.querySelector("#log-in").addEventListener("click", () => {
     console.log("click");
-    let username = document.getElementById("login-name").value;
-    fetch("http://localhost:8088/users?username=${$username}")
+    let logName = document.getElementById("login-name").value
+    let logPassword = document.getElementById("login-password").value
+    console.log(logPassword)
+    console.log(logName)
+    fetch(`http://localhost:8088/users?username=${logName}`)
       .then(data => data.json())
       .then(user => {
-        console.log(user);
-        sessionStorage.setItem("activeuser", "Tom");
-        console.log(sessionStorage.getItem("activeuser"));
+          if (user[0].password === logPassword)
+          {
+            sessionStorage.setItem("activeuser", user[0].id);
+            console.log("hello")
+            console.log(sessionStorage.getItem("activeuser"));
+          }
+          else
+          {
+              alert("That password ain't right")
+          }
+        console.log(user)
       });
   });
 }
