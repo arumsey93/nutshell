@@ -1,24 +1,22 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "username": "Alex",
+      "email": "me@me.com",
+      "password": "password"
     },
     {
-      "id": 2,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "username": "Bob",
+      "email": "bob@bob.com",
+      "password": "bobob",
+      "id": 2
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "username": "Mob",
+      "email": "mob@mob.com",
+      "password": "mobob",
+      "id": 3
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
