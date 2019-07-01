@@ -3,26 +3,26 @@
     {
       "id": 1,
       "username": "Alex",
-      "email": "me@me.com",
+      "email": "alex@alex.com",
       "password": "password"
     },
     {
-      "username": "Bobob",
-      "email": "mob@mob.com",
-      "password": "mobob",
+      "username": "Adam",
+      "email": "adam@adam.com",
+      "password": "hideandseek",
       "id": 3
     },
     {
-      "username": "Bob",
-      "email": "bob@bob.com",
-      "password": "bobob",
+      "username": "Daniel",
+      "email": "dan@dan.com",
+      "password": "danan",
       "id": 2
     },
     {
-      "username": "Mob",
-      "email": "mob@mob.com",
-      "password": "mobob",
-      "id": 3
+      "username": "Joe",
+      "email": "joe@joe.com",
+      "password": "iamjoe",
+      "id": 4
     }
   ]
 }

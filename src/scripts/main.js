@@ -1,3 +1,5 @@
+import {createDashboardContainer} from "./components.js"
+
 function getValues() {
   return fetch("http://localhost:8088/users").then(response => response.json());
 }
@@ -20,11 +22,14 @@ function logIn() {
     fetch(`http://localhost:8088/users?username=${logName}`)
       .then(data => data.json())
       .then(user => {
-          if (user[0].password === logPassword)
+        if (!user[0]) {
+          alert("That user doesn't exist")
+        }else if (user[0].password === logPassword)
           {
             sessionStorage.setItem("activeuser", user[0].id);
             console.log("hello")
             console.log(sessionStorage.getItem("activeuser"));
+            addToDom("#container", createDashboardContainer())
           }
           else
           {
@@ -68,6 +73,7 @@ function register() {
           },
           body: JSON.stringify(newUser(regname, regemail, regpassword))
         });
+        addToDom("#container", createDashboardContainer())
     }
     console.log("click");
   });
@@ -120,3 +126,5 @@ document.getElementById("welcome-login").addEventListener("click", event =>
     addToDom("#container", loginComponent())
     logIn();
 })
+
+
