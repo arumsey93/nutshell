@@ -8,18 +8,26 @@ API.getValues().then(array => {
   validationArray = array;
 });
 
-Action.addToDom("#container", Comp.welcomeComponent())
-
-document.getElementById("welcome-register").addEventListener("click", event =>
+if (sessionStorage.length === 0)
 {
-  Action.addToDom("#container", Comp.registerComponent())
-  Action.register(validationArray);
-})
+    Action.addToDom("#container", Comp.welcomeComponent())
 
-document.getElementById("welcome-login").addEventListener("click", event =>
+    document.getElementById("welcome-register").addEventListener("click", event =>
+    {
+    Action.addToDom("#container", Comp.registerComponent())
+    Action.register(validationArray);
+    })
+
+    document.getElementById("welcome-login").addEventListener("click", event =>
+    {
+        Action.addToDom("#container", Comp.loginComponent())
+        Action.logIn();
+    })
+}
+else
 {
-    Action.addToDom("#container", Comp.loginComponent())
-    Action.logIn();
-})
+    Action.addToDom("#container", Comp.createDashboardContainer())
+}
+
 
 
