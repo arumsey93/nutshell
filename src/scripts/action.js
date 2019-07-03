@@ -10,6 +10,7 @@ let fetchUsers = (name) =>
         sessionStorage.setItem("activeuser", user[0].id)
         Action.addToDom("#container", Comp.createDashboardContainer())
         Action.createEvent()
+        API.displayFetch()
     })
 }
 
@@ -21,6 +22,10 @@ export const Action = {
 
   addCards(container, component) {
     document.querySelector(container).appendChild(component);
+  },
+
+  concatDom(container, component) {
+    document.querySelector(container).innerHTML += component;
   },
 
   logIn() {
@@ -37,6 +42,7 @@ export const Action = {
               sessionStorage.setItem("activeuser", user[0].id)
               this.addToDom("#container", Comp.createDashboardContainer())
               this.createEvent()
+              API.displayFetch()
             }
             else
             {
