@@ -1,5 +1,15 @@
 console.log("Action loaded");
 import { Comp } from "./comp.js"
+let fetchUsers = (name) =>
+{
+  fetch(`http://localhost:8088/users?username=${name}`)
+    .then(data => data.json())
+    .then(user => {
+      console.log("2")
+        sessionStorage.setItem("activeuser", user[0].id)
+        Action.addToDom("#container", Comp.createDashboardContainer())
+    })
+}
 export const Action = {
 
   addToDom(container, component) {
@@ -15,9 +25,9 @@ export const Action = {
         .then(user => {
           if (!user[0]) {
             alert("That user doesn't exist")
-          }else if (user[0].password === logPassword)
+          } else if (user[0].password === logPassword)
             {
-              sessionStorage.setItem("activeuser", user[0].id);
+              sessionStorage.setItem("activeuser", user[0].id)
               this.addToDom("#container", Comp.createDashboardContainer())
             }
             else
@@ -59,9 +69,10 @@ export const Action = {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(newUser(regname, regemail, regpassword))
-          });
-          this.addToDom("#container", Comp.createDashboardContainer())
+            body: JSON.stringify(this.newUser(regname, regemail, regpassword))
+          })
+          .then(returnedUsers => returnedUsers.json())
+          .then(() => {fetchUsers(regname)})
       }
     });
   }
