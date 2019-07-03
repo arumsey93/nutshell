@@ -15,14 +15,14 @@ export const Action = {
         .then(user => {
           if (!user[0]) {
             alert("That user doesn't exist")
-          }else if (user[0].password === logPassword)
+          } else if (user[0].password === logPassword)
             {
               sessionStorage.setItem("activeuser", user[0].id);
               this.addToDom("#container", Comp.createDashboardContainer())
             }
             else
             {
-                alert("That password ain't right")
+              alert("That password ain't right")
             }
         });
     });
@@ -53,15 +53,14 @@ export const Action = {
       });
       if (!userExists)
       {
-          fetch("http://localhost:8088/users", {
-            // Replace "url" with your API's URL
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newUser(regname, regemail, regpassword))
-          });
-          this.addToDom("#container", Comp.createDashboardContainer())
+        fetch("http://localhost:8088/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(this.newUser(regname, regemail, regpassword))
+        });
+        this.addToDom("#container", Comp.createDashboardContainer())
       }
     });
   }
