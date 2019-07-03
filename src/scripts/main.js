@@ -6,6 +6,7 @@ let validationArray = [];
 
 API.getValues().then(array => {
   validationArray = array;
+  console.log(validationArray)
 });
 
 if (sessionStorage.length === 0) {

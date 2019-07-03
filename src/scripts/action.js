@@ -1,6 +1,7 @@
 console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
+
 let fetchUsers = (name) =>
 {
   fetch(`http://localhost:8088/users?username=${name}`)
@@ -8,7 +9,7 @@ let fetchUsers = (name) =>
     .then(user => {
       console.log("2")
         sessionStorage.setItem("activeuser", user[0].id)
-        Action.addToDom("#container", Comp.createDashboardContainer())
+        Action.addToDom("#container", Comp.eventForm())
         Action.createEvent()
     })
 }
@@ -35,7 +36,7 @@ export const Action = {
           } else if (user[0].password === logPassword)
             {
               sessionStorage.setItem("activeuser", user[0].id)
-              this.addToDom("#container", Comp.createDashboardContainer())
+              this.addToDom("#container", Comp.eventForm())
               this.createEvent()
             }
             else
@@ -138,26 +139,49 @@ export const Action = {
       let id = event.target.id
       if (event.target.id.startsWith("edit-"))
       {
-        let eventName = document.querySelector("#event-name").value;
-        let eventDate = document.querySelector("#event-date").value;
-        let eventLocation = document.querySelector("#event-location").value;
-        const card = this.newEvent(eventName, eventDate, eventLocation)
-        console.log("edit")
-        id = id.split("-")
-        console.log(id[1])
-        API.editCard("events", id[1], card)
+        this.changeCard(event)
+      }
+      else if (event.target.id.startsWith("update-event-"))
+      {
+        this.editCard(event)
       }
       else if (event.target.id.startsWith("delete-"))
       {
         id = id.split("-")
         API.deleteCard("events", id[1])
       }
-
     })
-
   },
+
+  changeCard(event) {
+      let id = event.target.id.split("-")
+      id = id[1]
+      console.log(id)
+      let eventName = document.querySelector(`#eventName-${id}`).textContent;
+      let eventDate = document.querySelector(`#eventDate-${id}`).textContent;
+      let eventLocation = document.querySelector(`#eventLocation-${id}`).textContent;
+      console.log(eventName)
+      const object = this.newEvent(eventName, eventDate, eventLocation)
+      console.log("edit")
+      this.addToDom(`#edit-form-container-${id}`, Comp.eventEditCard(object, id))
+  },
+
+  editCard(event) {
+    let id = event.target.id.split("-")
+    id = id[2]
+    console.log(id)
+    let eventName = document.querySelector(`#event-name-${id}`).value;
+    let eventDate = document.querySelector(`#event-date-${id}`).value;
+    let eventLocation = document.querySelector(`#event-location-${id}`).value;
+    const card = this.newEvent(eventName, eventDate, eventLocation)
+    console.log("edit")
+    API.editCard("events", id, card)
+},
 
   eventHandler(button, input, callbackFunc) {
     document.querySelector(button).addEventListener(input, callbackFunc)
   }
 };
+
+
+{/* <div id="edit-form-container-${event.id}"></div> */}
