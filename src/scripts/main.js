@@ -8,12 +8,28 @@ API.getValues().then(array => {
   validationArray = array;
 });
 
-Action.addToDom("#container", Comp.welcomeComponent());
+if (sessionStorage.length === 0)
+{
+    Action.addToDom("#container", Comp.welcomeComponent())
 
-document.getElementById("welcome-register").addEventListener("click", event => {
-  Action.addToDom("#container", Comp.registerComponent());
-  Action.register(validationArray);
-});
+    document.getElementById("welcome-register").addEventListener("click", event =>
+    {
+    Action.addToDom("#container", Comp.registerComponent())
+    Action.register(validationArray);
+    })
+
+    document.getElementById("welcome-login").addEventListener("click", event =>
+    {
+        Action.addToDom("#container", Comp.loginComponent())
+        Action.logIn();
+    })
+}
+else
+{
+    Action.addToDom("#container", Comp.createDashboardContainer())
+}
+
+
 
 document.getElementById("welcome-login").addEventListener("click", event => {
   Action.addToDom("#container", Comp.loginComponent());
