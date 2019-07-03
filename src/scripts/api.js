@@ -3,8 +3,8 @@ import { Action } from "./action";
 console.log("API loaded")
 
 export const API = {
-  getValues() {
-    return fetch("http://localhost:8088/users")
+  getValues(resource) {
+    return fetch(`http://localhost:8088/${resource}`)
       .then(response => response.json());
   },
 

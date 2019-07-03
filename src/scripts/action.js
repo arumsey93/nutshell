@@ -9,7 +9,7 @@ let fetchUsers = (name) =>
       console.log("2")
         sessionStorage.setItem("activeuser", user[0].id)
         Action.addToDom("#container", Comp.createDashboardContainer())
-        Action.createEvent()
+        // Action.createEvent()
     })
 }
 
@@ -36,7 +36,7 @@ export const Action = {
             {
               sessionStorage.setItem("activeuser", user[0].id)
               this.addToDom("#container", Comp.createDashboardContainer())
-              this.createEvent()
+              // this.createEvent()
             }
             else
             {
