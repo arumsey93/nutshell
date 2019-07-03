@@ -23,6 +23,38 @@
       "email": "joe@joe.com",
       "password": "iamjoe",
       "id": 4
+    },
+    {
+      "username": "17",
+      "email": "17",
+      "password": "17",
+      "id": 5
+    }
+  ],
+  "events": [
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "id": 5
+    },
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "id": 6
+    },
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "id": 7
+    },
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "id": 8
     }
   ]
 }
