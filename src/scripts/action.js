@@ -23,6 +23,10 @@ export const Action = {
     document.querySelector(container).appendChild(component);
   },
 
+  concatDom(container, component) {
+    document.querySelector(container).innerHTML += component;
+  },
+
   logIn() {
     document.querySelector("#log-in").addEventListener("click", () => {
       let logName = document.getElementById("login-name").value
