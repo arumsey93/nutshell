@@ -8,6 +8,21 @@ export const Comp = {
   },
   createDashboardContainer() {
     return `
+        <nav>This is the nav bar</nav>
+        <div id="formContainer">
+          <fieldset>
+          <label for="journalDate">Name</label>
+          <input type="text" name="eventName" id="event-name" required/>
+          <label for="journalConcepts">Date</label>
+          <input type="date" name="eventDate" id="event-date" required>
+          <label for="journalEntry">Location</label>
+          <input type="text" name="eventLocation" id="event-location" required>
+          <div class="eventcreate">
+            <input id="create-event" type="button" value="Create Event">
+          </div>
+        </fieldset>
+        </div>
+        <div id="listContainer"></div>
     <nav>
       <button id="events">Events</button>
       <button id="articles">Articles</button>
@@ -36,6 +51,21 @@ export const Comp = {
       <button id="log-in">Log In</button>
     </div>`;
   },
+
+  eventCard(event)
+  {
+    return `
+            <fieldset>
+            <h1 class="name">${event.name}</h1>
+            <h3 class="date">${event.date}</h3>
+            <h2 class="location">${event.location}</h2>
+            <div class="button-container">
+              <button class="delete-event" id="delete-${event.id}">Delete</button>
+              <button class="edit-event" id="edit-${event.id}">Edit</button>
+            </div>
+            </fieldset>`
+  },
+
   chatFormComponent() {
     return `
     <div id="chat-form-container">

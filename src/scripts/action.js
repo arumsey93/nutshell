@@ -1,5 +1,6 @@
 console.log("Action loaded");
-import { Comp } from "./comp.js"
+import {Comp} from "./comp.js"
+import {API} from "./api.js"
 let fetchUsers = (name) =>
 {
   fetch(`http://localhost:8088/users?username=${name}`)
@@ -8,12 +9,18 @@ let fetchUsers = (name) =>
       console.log("2")
         sessionStorage.setItem("activeuser", user[0].id)
         Action.addToDom("#container", Comp.createDashboardContainer())
+        Action.createEvent()
     })
 }
+
 export const Action = {
 
   addToDom(container, component) {
     document.querySelector(container).innerHTML = component;
+  },
+
+  addCards(container, component) {
+    document.querySelector(container).appendChild(component);
   },
 
   logIn() {
@@ -29,6 +36,7 @@ export const Action = {
             {
               sessionStorage.setItem("activeuser", user[0].id)
               this.addToDom("#container", Comp.createDashboardContainer())
+              this.createEvent()
             }
             else
             {
@@ -43,6 +51,14 @@ export const Action = {
       username: username,
       email: email,
       password: password
+    };
+  },
+
+  newEvent(name, date, location) {
+    return {
+      name: name,
+      date: date,
+      location: location
     };
   },
 
@@ -75,6 +91,70 @@ export const Action = {
           .then(() => {fetchUsers(regname)})
       }
     });
+  },
+
+  createEvent() {
+    console.log("awefawe")
+    document.querySelector("#create-event").addEventListener("click", () =>
+    {
+      let eventName = document.getElementById("event-name").value;
+      let eventDate = document.getElementById("event-date").value;
+      let eventLocation = document.getElementById("event-location").value;
+      console.log("hello")
+      console.log(eventName)
+      fetch("http://localhost:8088/events", {
+        // Replace "url" with your API's URL
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.newEvent(eventName, eventDate, eventLocation))
+      })
+      .then(returnedEvents => returnedEvents.json())
+      .then(() => {this.addEvent()})
+    })
+  },
+
+  addEvent() {
+    API.getEvents()
+    .then(events =>
+    {
+      document.querySelector("#listContainer").innerHTML = ""
+      events.forEach(event =>
+      {
+        console.log("event", event)
+        const eventContainer = document.createElement("div")
+        eventContainer.innerHTML = Comp.eventCard(event)
+        this.addCards("#listContainer", eventContainer)
+      })
+      this.eventEvent()
+    })
+  },
+
+  eventEvent() {
+    console.log("APWOEIFJAOWEIJ")
+    document.querySelector("#listContainer").addEventListener("click", event =>
+    {
+      let id = event.target.id
+      if (event.target.id.startsWith("edit-"))
+      {
+        let eventName = document.querySelector("#event-name").value;
+        let eventDate = document.querySelector("#event-date").value;
+        let eventLocation = document.querySelector("#event-location").value;
+        const card = this.newEvent(eventName, eventDate, eventLocation)
+        console.log("edit")
+        id = id.split("-")
+        console.log(id[1])
+        API.editCard("events", id[1], card)
+      }
+      else if (event.target.id.startsWith("delete-"))
+      {
+        id = id.split("-")
+        API.deleteCard("events", id[1])
+      }
+
+    })
+
   },
 
   eventHandler(button, input, callbackFunc) {
