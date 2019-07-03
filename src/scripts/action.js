@@ -75,5 +75,9 @@ export const Action = {
           .then(() => {fetchUsers(regname)})
       }
     });
+  },
+
+  eventHandler(button, input, callbackFunc) {
+    document.querySelector(button).addEventListener(input, callbackFunc)
   }
 };
