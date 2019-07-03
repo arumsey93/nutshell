@@ -24,5 +24,14 @@
       "password": "iamjoe",
       "id": 4
     }
+  ],
+  "message": [
+    {
+      "id": 1,
+      "title": "title",
+      "article": "article",
+      "user_id": 1,
+      "friend_id": 2
+    }
   ]
 }

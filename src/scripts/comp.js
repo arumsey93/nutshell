@@ -29,5 +29,20 @@ export const Comp = {
         <input id="login-password" type="text" placeholder="Password">
         <button id="log-in">Log In</button>
     </div>`;
+  },
+  chatFormComponent() {
+    return `
+    <div id="chat-form-container">
+      <label for="chat-form-container">Enter Your Message:</label>
+      <textarea name="chat-form" id="chat-form" rows="5" columns="60"></textarea>
+      <button id="chatPostBtn">Send Message</button>
+      </div>
+    `
+  },
+  chatListComponent() {
+    return `
+    <div id="chat-list-container">
+    </div>
+    `
   }
 };
