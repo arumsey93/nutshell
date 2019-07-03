@@ -44,5 +44,27 @@ export const Comp = {
     <div id="chat-list-container">
     </div>
     `
+  },
+  taskFormComponent() {
+    return `
+    <div id="task-form-component">
+    <label for="taskManager">Task Manager</label>
+    <input id="task-name" type="text" placeholder="Task Name">
+    <input id="task-date" type="date">
+    <textarea name="task-description" id="task-description" rows="4" columns="40"></textarea>
+    </div>
+    `
+  },
+  taskListComponent(task) {
+    return `
+    <div id="task-list-component">
+    <label for="taskList">Task List</label>
+    <p>Name ${task.name}</p>
+    <p>Date ${task.date}</p>
+    <p>Description ${task.description}</p>
+    <button id="task-delete">Delete</button>
+    <button id="task-edit">Edit</button>
+    </div>
+    `
   }
 };
