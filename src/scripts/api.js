@@ -5,8 +5,9 @@ export const API = {
     return fetch("http://localhost:8088/users")
       .then(response => response.json());
   },
-  postValue(post) {
-    return fetch(`http://localhost:8088/${post.user_id}`, {
+  postValue(resource, post) {
+    // return fetch(`http://localhost:8088/${resource}/${post.user_id}`, {
+    return fetch(`http://localhost:8088/${resource}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -30,6 +31,6 @@ export const API = {
       },
       body: JSON.stringify(edit)
     })
-    .then((data) => data.json())
+      .then((data) => data.json())
   }
 }

@@ -32,7 +32,7 @@ export const Action = {
             }
             else
             {
-                alert("That password ain't right")
+              alert("That password ain't right")
             }
         });
     });
@@ -75,5 +75,9 @@ export const Action = {
           .then(() => {fetchUsers(regname)})
       }
     });
+  },
+
+  eventHandler(button, input, callbackFunc) {
+    document.querySelector(button).addEventListener(input, callbackFunc)
   }
 };

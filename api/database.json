@@ -23,6 +23,56 @@
       "email": "joe@joe.com",
       "password": "iamjoe",
       "id": 4
+    },
+    {
+      "username": "g",
+      "email": "g",
+      "password": "g",
+      "id": 5
+    }
+  ],
+  "articles": [
+    {
+      "title": "",
+      "synopsis": "",
+      "url": "",
+      "id": 1
+    },
+    {
+      "title": "titlelkjjag",
+      "synopsis": "ljhaeraglkjh",
+      "url": "kljjadg",
+      "id": 2
+    },
+    {
+      "title": "",
+      "synopsis": "",
+      "url": "",
+      "id": 3
+    },
+    {
+      "title": "",
+      "synopsis": "",
+      "url": "",
+      "id": 4
+    },
+    {
+      "title": "",
+      "synopsis": "",
+      "url": "",
+      "id": 5
+    },
+    {
+      "title": "hey",
+      "synopsis": "man",
+      "url": "cool",
+      "id": 6
+    },
+    {
+      "title": "hey",
+      "synopsis": "man",
+      "url": "cool",
+      "id": 7
     }
   ],
   "message": [
