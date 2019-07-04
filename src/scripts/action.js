@@ -1,3 +1,5 @@
+// Authors: Joe Kennerly,
+// Use this page for generic functions
 console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
@@ -6,7 +8,6 @@ let fetchUsers = (name) =>
   fetch(`http://localhost:8088/users?username=${name}`)
     .then(data => data.json())
     .then(user => {
-      console.log("2")
         sessionStorage.setItem("activeuser", user[0].id)
         Action.addToDom("#container", Comp.createDashboardContainer())
         // Action.createEvent()
@@ -84,7 +85,6 @@ export const Action = {
       if (!userExists)
       {
           fetch("http://localhost:8088/users", {
-            // Replace "url" with your API's URL
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -98,16 +98,12 @@ export const Action = {
   },
 
   createEvent() {
-    console.log("awefawe")
     document.querySelector("#create-event").addEventListener("click", () =>
     {
       let eventName = document.getElementById("event-name").value;
       let eventDate = document.getElementById("event-date").value;
       let eventLocation = document.getElementById("event-location").value;
-      console.log("hello")
-      console.log(eventName)
       fetch("http://localhost:8088/events", {
-        // Replace "url" with your API's URL
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -161,7 +157,7 @@ export const Action = {
 
   },
 
-  eventHandler(button, input, callbackFunc) {
-    document.querySelector(button).addEventListener(input, callbackFunc)
+  onClick(button, callbackFunc) {
+    document.querySelector(button).addEventListener("click", callbackFunc)
   }
 };

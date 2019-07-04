@@ -1,13 +1,17 @@
+// Authors: Joe Kennerly,
+// Use this Comp obj to hold functions to return strings of html
 console.log("Comp Loaded");
 
 export const Comp = {
   welcomeComponent() {
     return `
+    <h1>Nutshell</h1>
     <button id="welcome-register">Register</button>
     <button id="welcome-login">Log In</button>`;
   },
   createDashboardContainer() {
     return `
+    <h1>Nutshell</h1>
     <nav>
       <button id="events">Events</button>
       <button id="articles">Articles</button>
@@ -40,15 +44,15 @@ export const Comp = {
   eventCard(event)
   {
     return `
-            <fieldset>
-            <h1 class="name">${event.name}</h1>
-            <h3 class="date">${event.date}</h3>
-            <h2 class="location">${event.location}</h2>
-            <div class="button-container">
-              <button class="delete-event" id="delete-${event.id}">Delete</button>
-              <button class="edit-event" id="edit-${event.id}">Edit</button>
-            </div>
-            </fieldset>`
+    <fieldset>
+      <h1 class="name">${event.name}</h1>
+      <h3 class="date">${event.date}</h3>
+      <h2 class="location">${event.location}</h2>
+      <div class="button-container">
+        <button class="delete-event" id="delete-${event.id}">Delete</button>
+        <button class="edit-event" id="edit-${event.id}">Edit</button>
+      </div>
+    </fieldset>`
   },
 
   chatFormComponent() {
@@ -100,9 +104,9 @@ export const Comp = {
     return `<div id="article-component">
       <p>Title ${article.title}</p>
       <p>Synopsis ${article.synopsis}</p>
-      <p>url ${article.url}</p>
-      <button id="article-edit">Edit<button>
-      <button id="article-delete">Delete<button>
+      <a href="${article.url}">${article.url}</a></br>
+      <button id="article-edit">Edit</button>
+      <button id="article-delete">Delete</button>
     </div>`
   }
 };

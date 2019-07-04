@@ -4,11 +4,6 @@ import {Comp} from "./comp.js";
 console.log("API loaded");
 
 export const API = {
-  getValues(resource) {
-    return fetch(`http://localhost:8088/${resource}`)
-      .then(response => response.json());
-  },
-
   displayFetch() {
     this.getValues("events")
     .then(array => {
