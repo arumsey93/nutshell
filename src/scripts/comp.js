@@ -88,7 +88,9 @@ export const Comp = {
     <input id="task-name" type="text" placeholder="Task Name">
     <input id="task-date" type="date">
     <textarea name="task-description" id="task-description" rows="4" columns="40"></textarea>
+    <button id ="taskButton">Create Task</button>
     </div>
+    
     `
   },
   taskListComponent(task) {
