@@ -93,13 +93,13 @@ export const Comp = {
     
     `
   },
-  taskListComponent(task) {
+  taskListComponent(taskName, taskDate, taskDescription) {
     return `
     <div id="task-list-component">
     <label for="taskList">Task List</label>
-    <p>Name ${task.name}</p>
-    <p>Date ${task.date}</p>
-    <p>Description ${task.description}</p>
+    <p>Name ${taskName}</p>
+    <p>Date ${taskDate}</p>
+    <p>Description ${taskDescription}</p>
     <button id="task-delete">Delete</button>
     <button id="task-edit">Edit</button>
     </div>

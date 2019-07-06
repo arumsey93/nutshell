@@ -56,7 +56,6 @@
       "location": "",
       "id": 8
     }
-    
   ],
   "articles": [
     {
@@ -109,6 +108,89 @@
       "article": "article",
       "user_id": 1,
       "friend_id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 2
+    },
+    {
+      "taskName": "cleaning",
+      "taskDate": "2019-07-08",
+      "taskDescription": "do this everyday",
+      "id": 3
+    },
+    {
+      "taskName": "sweeping",
+      "taskDate": "2019-07-16",
+      "taskDescription": "cleans the floors",
+      "id": 4
+    },
+    {
+      "taskName": "mopping",
+      "taskDate": "2019-07-02",
+      "taskDescription": "whaaat",
+      "id": 5
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 6
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 7
+    },
+    {
+      "taskName": "dd",
+      "taskDate": "",
+      "taskDescription": "d",
+      "id": 8
+    },
+    {
+      "taskName": "f",
+      "taskDate": "2019-07-08",
+      "taskDescription": "f",
+      "id": 9
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 10
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 11
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "d",
+      "id": 12
+    },
+    {
+      "taskName": "d",
+      "taskDate": "2019-07-02",
+      "taskDescription": "ddd",
+      "id": 13
+    },
+    {
+      "taskName": "cleaning",
+      "taskDate": "2019-07-16",
+      "taskDescription": "do it now",
+      "id": 14
     }
   ]
 }

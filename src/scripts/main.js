@@ -24,40 +24,42 @@ if (sessionStorage.length === 0) {
   Action.addToDom("#container", Comp.createDashboardContainer());
 }
 
-function createTask(){
-document.querySelector("#taskButton").addEventListener("click", () => {
-console.log("create task button clicked")
-let taskName = document.querySelector("#task-name").value
-let taskDate = document.querySelector("#task-date").value
-let taskDescription = document.querySelector("#task-description").value
-})
+function createTask() {
+  document.querySelector("#taskButton").addEventListener("click", () => {
+    console.log("create task button clicked");
+    let taskName = document.querySelector("#task-name").value;
+    let taskDate = document.querySelector("#task-date").value;
+    let taskDescription = document.querySelector("#task-description").value;
+    // Action.addToDom("#container", Comp.taskListComponent("nme"));
+    console.log(taskName, taskDate, taskDescription);
+    let taskObj = {
+      taskName: taskName,
+      taskDate: taskDate,
+      taskDescription: taskDescription
+    };
+    API.postValue("tasks", taskObj);
+    document.querySelector("#container").innerHTML = "";
+    fetch("http://localhost:8088/tasks")
+      .then(data => data.json())
+      .then(newData => {
+        newData.forEach(task => {
+          document.querySelector(
+            "#container"
+          ).innerHTML = Comp.taskListComponent(
+            taskName,
+            taskDate,
+            taskDescription
+          );
+        });
+      });
+  });
 }
+
 document.querySelector("#tasks").addEventListener("click", () => {
   console.log("task button clicked");
   Action.addToDom("#container", Comp.taskFormComponent());
-  createTask()
+  createTask();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document.querySelector("#articles").addEventListener("click", () => {
   document.querySelector("#formContainer").innerHTML = Comp.articleForm();
