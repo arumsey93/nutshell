@@ -8,21 +8,7 @@ export const Comp = {
   },
   createDashboardContainer() {
     return `
-        <nav>This is the nav bar</nav>
-        <div id="formContainer">
-          <fieldset>
-          <label for="journalDate">Name</label>
-          <input type="text" name="eventName" id="event-name" required/>
-          <label for="journalConcepts">Date</label>
-          <input type="date" name="eventDate" id="event-date" required>
-          <label for="journalEntry">Location</label>
-          <input type="text" name="eventLocation" id="event-location" required>
-          <div class="eventcreate">
-            <input id="create-event" type="button" value="Create Event">
-          </div>
-        </fieldset>
-        </div>
-        <div id="listContainer"></div>
+       
     <nav>
       <button id="events">Events</button>
       <button id="articles">Articles</button>
@@ -93,16 +79,16 @@ export const Comp = {
     
     `
   },
-  taskListComponent(taskName, taskDate, taskDescription) {
+  taskListComponent(task) {
     return `
-    <div id="task-list-component">
+    <fieldset><div id="task-list-component">
     <label for="taskList">Task List</label>
-    <p>Name ${taskName}</p>
-    <p>Date ${taskDate}</p>
-    <p>Description ${taskDescription}</p>
-    <button id="task-delete">Delete</button>
-    <button id="task-edit">Edit</button>
-    </div>
+    <p>Name: ${task.taskName}</p>
+    <p>Estimated Date Completion: ${task.taskDate}</p>
+    <p>Description: ${task.taskDescription}</p>
+    <label>Click to Complete</label>
+    <input type = "checkbox" id = delete-${task.id}>
+    </div></fieldset>
     `
   },
   articleForm() {

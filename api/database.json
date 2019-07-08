@@ -99,6 +99,12 @@
       "synopsis": "man",
       "url": "cool",
       "id": 7
+    },
+    {
+      "title": "jaklsdf",
+      "synopsis": "jhfaks",
+      "url": "kjhskdjf",
+      "id": 8
     }
   ],
   "message": [
@@ -112,85 +118,116 @@
   ],
   "tasks": [
     {
+      "taskName": "",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": true,
       "id": 1
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": true,
       "id": 2
     },
     {
       "taskName": "cleaning",
-      "taskDate": "2019-07-08",
-      "taskDescription": "do this everyday",
+      "taskDate": "",
+      "taskDescription": "cleaning",
+      "isComplete": true,
       "id": 3
     },
     {
-      "taskName": "sweeping",
-      "taskDate": "2019-07-16",
-      "taskDescription": "cleans the floors",
+      "taskName": "cleaning",
+      "taskDate": "",
+      "taskDescription": "cleaning",
+      "isComplete": false,
       "id": 4
     },
     {
       "taskName": "mopping",
-      "taskDate": "2019-07-02",
-      "taskDescription": "whaaat",
+      "taskDate": "",
+      "taskDescription": "mopping",
+      "isComplete": true,
       "id": 5
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "mopping",
+      "taskDate": "",
+      "taskDescription": "mopping",
+      "isComplete": false,
       "id": 6
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "ffffff",
+      "taskDate": "",
+      "taskDescription": "ffff",
+      "isComplete": false,
       "id": 7
     },
     {
-      "taskName": "dd",
+      "taskName": "arfs",
       "taskDate": "",
-      "taskDescription": "d",
+      "taskDescription": "dsfs",
+      "isComplete": false,
       "id": 8
     },
     {
-      "taskName": "f",
-      "taskDate": "2019-07-08",
-      "taskDescription": "f",
+      "taskName": "arfs",
+      "taskDate": "",
+      "taskDescription": "dsfs",
+      "isComplete": false,
       "id": 9
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "arfs",
+      "taskDate": "",
+      "taskDescription": "dsfs",
+      "isComplete": false,
       "id": 10
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "arfs",
+      "taskDate": "",
+      "taskDescription": "dsfs",
+      "isComplete": false,
       "id": 11
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "d",
+      "taskName": "mowing",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": false,
       "id": 12
     },
     {
-      "taskName": "d",
-      "taskDate": "2019-07-02",
-      "taskDescription": "ddd",
+      "taskName": "mowing",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": false,
       "id": 13
     },
     {
-      "taskName": "cleaning",
-      "taskDate": "2019-07-16",
-      "taskDescription": "do it now",
+      "taskName": "be happy",
+      "taskDate": "",
+      "taskDescription": "be happy",
+      "isComplete": true,
       "id": 14
+    },
+    {
+      "taskName": "mope",
+      "taskDate": "",
+      "taskDescription": "mope",
+      "isComplete": false,
+      "id": 15
+    },
+    {
+      "taskName": "be happy",
+      "taskDate": "",
+      "taskDescription": "be happy",
+      "isComplete": true,
+      "id": 16
     }
   ]
 }

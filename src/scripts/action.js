@@ -68,6 +68,14 @@ export const Action = {
     };
   },
 
+  newTask (taskName, taskDate, taskDescription) {
+    return {
+    taskName: taskName,
+    taskDate: taskDate,
+    taskDescription: taskDescription
+  };
+  },
+
   register(array) {
     document.querySelector("#register").addEventListener("click", () =>
     {
