@@ -98,13 +98,22 @@ export const Comp = {
       <button id ="article-save">Post Article</button>
     </div>`
   },
+
+  articleEditForm() {
+    return `<div id="article-edit-form">
+      <input id="articleEditTitle" type="text" placeholder="Title"/>
+      <input id="articleEditSynopsis" type="text" placeholder="Synopsis"/>
+      <input id="articleEditUrl" type="text" placeholder="Url"/>
+      <button id="article-edit">Save Edit</button>
+    </div>`
+  },
   article(article) {
-    return `<div id="article-component">
-      <p>Title ${article.title}</p>
+    return `<div class="article-component" id="article-component-${article.id}">
+      <p>Title ${article.title} ${article.id}</p>
       <p>Synopsis ${article.synopsis}</p>
       <a href="${article.url}">${article.url}</a></br>
-      <button id="article-edit">Edit</button>
-      <button id="article-delete">Delete</button>
+      <button id="article-edit-${article.id}">Edit</button>
+      <button id="article-delete-${article.id}">Delete</button>
     </div>`
   }
 };

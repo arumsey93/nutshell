@@ -5,34 +5,38 @@ import { API } from "./api.js";
 import { Action } from "./action.js";
 
 export const article = {
-  navHandler() {
+  navHandler(state) {
     // When articles button clicked
+    console.log("hi")
     document.querySelector("#articles").addEventListener("click", () => {
       // Add form to dom
       Action.addToDom("#formContainer", Comp.articleForm());
-      this.loadArticles()
-      this.enablePost()
+      API.getValues("articles").then(data => {
+        //Loop through array, +=ing each article
+        data.forEach(element => {
+          Action.concatDom("#listContainer", Comp.article(element));
+        })
+      })
+      this.enablePost();
+      this.enableDelete();
+      this.enableEdit()
     });
   },
 
   loadArticles() {
     // Load articles; convert to js array
-    API.getValues("articles")
-    .then(data => {
+    API.getValues("articles").then(data => {
       //Loop through array, +=ing each article
       data.forEach(element => {
-        Action.concatDom("#listContainer", Comp.article(element))
-        this.enableEdit()
-        this.enableDelete()
-      });
+        Action.concatDom("#listContainer", Comp.article(element));
+      })
     })
   },
-
 
   // Post Handler
   enablePost() {
     document.querySelector("#article-save").addEventListener("click", () => {
-      console.log("hello")
+      console.log("hello");
       let articleObj = {
         title: document.querySelector("#articleFormTitle").value,
         synopsis: document.querySelector("#articleFormSynopsis").value,
@@ -50,18 +54,47 @@ export const article = {
 
   // Delete Handler
   enableDelete() {
-    document
-      .querySelector("#article-delete")
-      .addEventListener("click", (event) => {
+    document.querySelector("#container").addEventListener("click", event => {
         let id = event.target.id
-        console.log("delete", id)
-      })
+        if (id.startsWith("article-delete-")) {
+          id = +id.split("-")[2]
+          console.log("delete", id)
+          API.deleteValue("articles", id)
+          document.querySelector("#listContainer").innerHTML = ""
+          API.getValues("articles").then(newData =>
+            newData.forEach(article =>
+              Action.concatDom("#listContainer", Comp.article(article))
+            )
+          );
+        }
+      });
   },
 
   // Edit Handler
   enableEdit() {
-    document
-      .querySelector("#article-edit")
-      .addEventListener("click", () => console.log("edit"));
+    document.querySelector("#container").addEventListener("click", event => {
+      let id = event.target.id;
+      if (id.startsWith("article-edit-")) {
+        id = +id.split("-")[2]
+        console.log("edit", id);
+        document.querySelector(`#article-component-${id}`).innerHTML = ""
+        document.querySelector(`#article-component-${id}`).innerHTML = Comp.articleEditForm()
+        document.querySelector("#article-edit").addEventListener("click", () => {
+          let newObj = {
+            title: document.querySelector("#articleEditTitle").value,
+            synopsis: document.querySelector("#articleEditSynopsis").value,
+            url: document.querySelector("#articleEditUrl").value
+          }
+          console.log(newObj)
+          API.editValue("articles", id, newObj)
+          document.querySelector("#listContainer").innerHTML = ""
+          API.getValues("articles").then(newData => {
+            console.log(newData)
+            newData.forEach(article => Action.concatDom("#listContainer", Comp.article(article)))
+          })
+
+        })
+      }
+    });
   }
 };

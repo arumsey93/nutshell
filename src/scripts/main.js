@@ -1,5 +1,7 @@
 import { dom } from "./dom.js"
 import { API } from "./api.js"
+import { Action } from "./action.js"
+import { Comp } from "./comp.js"
 
 let validationArray = [];
 

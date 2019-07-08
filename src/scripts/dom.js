@@ -5,8 +5,8 @@ import { article } from "./articleHandler.js";
 
 export const dom = {
   loadDashboard() {
-    // let state = +sessionStorage.getItem("activeuser")
+    let state = +sessionStorage.getItem("activeuser")
     Action.addToDom("#container", Comp.createDashboardContainer())
-    article.navHandler()
+    article.navHandler(state)
   }
 }

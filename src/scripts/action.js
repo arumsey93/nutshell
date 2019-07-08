@@ -1,6 +1,7 @@
 console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
+import { dom } from "./dom.js";
 let fetchUsers = (name) =>
 {
   fetch(`http://localhost:8088/users?username=${name}`)
@@ -36,9 +37,9 @@ export const Action = {
           if (!user[0]) {
             alert("That user doesn't exist")
           } else if (user[0].password === logPassword) {
-              sessionStorage.setItem("activeuser", user[0].id)
-              this.addToDom("#container", Comp.createDashboardContainer())
-              // this.createEvent()
+            sessionStorage.setItem("activeuser", user[0].id)
+            dom.loadDashboard()
+              // this.addToDom("#container", Comp.createDashboardContainer())
             }
             else {
               alert("That password ain't right")
