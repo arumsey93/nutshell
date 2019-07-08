@@ -1,5 +1,3 @@
-// Authors: Joe Kennerly,
-// Use this Comp obj to hold functions to return strings of html
 console.log("Comp Loaded");
 
 export const Comp = {

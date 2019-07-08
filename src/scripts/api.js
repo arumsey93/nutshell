@@ -44,7 +44,6 @@ export const API = {
   },
 
   postValue(resource, post) {
-    // return fetch(`http://localhost:8088/${resource}/${post.user_id}`, {
     return fetch(`http://localhost:8088/${resource}`, {
       method: "POST",
       headers: {

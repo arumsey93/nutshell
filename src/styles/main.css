@@ -16,5 +16,8 @@ button {
   flex-direction:column;
 }
 #listContainer {
-  border:1px dotted red
+  border:1px dotted red;
+}
+.card {
+  border:1px dotted green;
 }

@@ -4,46 +4,64 @@ import { Comp } from "./comp.js";
 import { API } from "./api.js";
 import { Action } from "./action.js";
 
-export function articleHandler() {
-  // When articles button clicked
-  document.querySelector("#articles").addEventListener("click", () => {
+export const article = {
+  navHandler() {
+    // When articles button clicked
+    document.querySelector("#articles").addEventListener("click", () => {
+      // Add form to dom
+      Action.addToDom("#formContainer", Comp.articleForm());
+      this.loadArticles()
+      this.enablePost()
+    });
+  },
+
+  loadArticles() {
     // Load articles; convert to js array
-    API.getValues("articles").then(data => {
+    API.getValues("articles")
+    .then(data => {
       //Loop through array, +=ing each article
       data.forEach(element => {
         Action.concatDom("#listContainer", Comp.article(element))
-        // deleteHandler(element.id)
-      })
-      console.log(data)
+        this.enableEdit()
+        this.enableDelete()
+      });
     })
+  },
 
-    // Add form to dom
-    Action.addToDom("#formContainer", Comp.articleForm());
 
-    // Post Handler
+  // Post Handler
+  enablePost() {
     document.querySelector("#article-save").addEventListener("click", () => {
+      console.log("hello")
       let articleObj = {
         title: document.querySelector("#articleFormTitle").value,
         synopsis: document.querySelector("#articleFormSynopsis").value,
         url: document.querySelector("#articleFormUrl").value
-      }
+      };
       API.postValue("articles", articleObj);
-      document.querySelector("#listContainer").innerHTML = ""
+      document.querySelector("#listContainer").innerHTML = "";
       API.getValues("articles").then(newData =>
-        newData.forEach(article => Action.concatDom("#listContainer", Comp.article(article))))
-    })
-  })
-}
-// Delete Handler
-function deleteHandler(id) {
-  document
-    .querySelector("#article-delete")
-    .addEventListener("click", () => console.log("delete", id));
-}
+        newData.forEach(article =>
+          Action.concatDom("#listContainer", Comp.article(article))
+        )
+      );
+    });
+  },
 
-// Edit Handler
-function editHandler() {
-  document
-    .querySelector("#article-edit")
-    .addEventListener("click", () => console.log("edit"));
-}
+  // Delete Handler
+  enableDelete() {
+    document
+      .querySelector("#article-delete")
+      .addEventListener("click", (event) => {
+        let id = event.target.id
+        console.log("delete", id)
+      })
+  },
+
+  // Edit Handler
+  enableEdit() {
+    document
+      .querySelector("#article-edit")
+      .addEventListener("click", () => console.log("edit"));
+  }
+};

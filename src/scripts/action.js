@@ -1,5 +1,3 @@
-// Authors: Joe Kennerly,
-// Use this page for generic functions
 console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
@@ -37,14 +35,12 @@ export const Action = {
         .then(user => {
           if (!user[0]) {
             alert("That user doesn't exist")
-          } else if (user[0].password === logPassword)
-            {
+          } else if (user[0].password === logPassword) {
               sessionStorage.setItem("activeuser", user[0].id)
               this.addToDom("#container", Comp.createDashboardContainer())
               // this.createEvent()
             }
-            else
-            {
+            else {
               alert("That password ain't right")
             }
         });
@@ -117,11 +113,9 @@ export const Action = {
 
   addEvent() {
     API.getEvents()
-    .then(events =>
-    {
+    .then(events => {
       document.querySelector("#listContainer").innerHTML = ""
-      events.forEach(event =>
-      {
+      events.forEach(event => {
         console.log("event", event)
         const eventContainer = document.createElement("div")
         eventContainer.innerHTML = Comp.eventCard(event)
@@ -132,19 +126,14 @@ export const Action = {
   },
 
   eventEvent() {
-    console.log("APWOEIFJAOWEIJ")
-    document.querySelector("#listContainer").addEventListener("click", event =>
-    {
+    document.querySelector("#listContainer").addEventListener("click", event => {
       let id = event.target.id
-      if (event.target.id.startsWith("edit-"))
-      {
+      if (event.target.id.startsWith("edit-")){
         let eventName = document.querySelector("#event-name").value;
         let eventDate = document.querySelector("#event-date").value;
         let eventLocation = document.querySelector("#event-location").value;
         const card = this.newEvent(eventName, eventDate, eventLocation)
-        console.log("edit")
         id = id.split("-")
-        console.log(id[1])
         API.editCard("events", id[1], card)
       }
       else if (event.target.id.startsWith("delete-"))

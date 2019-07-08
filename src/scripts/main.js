@@ -1,7 +1,5 @@
-import { API } from "./api.js";
-import { Comp } from "./comp.js";
-import { Action } from "./action.js";
-import { articleHandler } from "./articleHandler.js";
+import { dom } from "./dom.js"
+import { API } from "./api.js"
 
 let validationArray = [];
 
@@ -20,6 +18,5 @@ if (sessionStorage.length === 0) {
       Action.logIn();
     })
 } else {
-  Action.addToDom("#container", Comp.createDashboardContainer())
-  articleHandler()
+  dom.loadDashboard()
 }
