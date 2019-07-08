@@ -1,10 +1,11 @@
 import { API } from "./api.js";
 import { Comp } from "./comp.js";
 import { Action } from "./action.js";
+import { chatDOM } from "./message-handler.js"
 
 let validationArray = [];
 
-API.getValues().then(array => {
+API.getValues("users").then(array => {
   validationArray = array;
 });
 
@@ -20,8 +21,10 @@ if (sessionStorage.length === 0) {
     })
 } else {
     Action.addToDom("#container", Comp.createDashboardContainer())
+    chatDOM()
 }
 
+function articlesDOM () {
 document.querySelector("#articles").addEventListener("click", () => {
   document.querySelector("#formContainer").innerHTML = Comp.articleForm()
   document.querySelector("#article-save").addEventListener("click", () => {
@@ -45,3 +48,4 @@ document.querySelector("#articles").addEventListener("click", () => {
       })
   })
 })
+}
