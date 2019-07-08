@@ -40,7 +40,18 @@ export const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(card)
-    }).then(() => Action.addEvent());
+    }).then(() => Action.addEvent())
+  },
+
+  editTask(name, id, card) {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(card)
+
+    }).then(data => data.json())
   },
 
   postValue(resource, post) {

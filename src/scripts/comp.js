@@ -81,7 +81,7 @@ export const Comp = {
   },
   taskListComponent(task) {
     return `
-    <fieldset><div id="task-list-component">
+    <fieldset><div id="taskList-${task.id}">
     <label for="taskList">Task List</label>
     <p>Name: ${task.taskName}</p>
     <p>Estimated Date Completion: ${task.taskDate}</p>
