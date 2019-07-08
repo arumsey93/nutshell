@@ -2,6 +2,7 @@ import {API} from "./api.js";
 import {Comp} from "./comp.js";
 import {Action} from "./action.js";
 import {Event} from "./events.js"
+import {dom} from "./dom.js"
 
 let validationArray = [];
 

@@ -2,6 +2,7 @@ console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
 import {Event} from "./events.js"
+import {dom} from "./dom.js"
 
 let fetchUsers = (name) =>
 {
@@ -38,8 +39,7 @@ export const Action = {
           } else if (user[0].password === logPassword)
             {
               sessionStorage.setItem("activeuser", user[0].id)
-              this.addToDom("#container", Comp.eventForm())
-              Event.createEvent()
+              dom.loadDashboard()
             }
             else
             {
@@ -108,8 +108,11 @@ export const Action = {
     let eventName = document.querySelector(`#event-name-${id}`).value;
     let eventDate = document.querySelector(`#event-date-${id}`).value;
     let eventLocation = document.querySelector(`#event-location-${id}`).value;
-    let userId = sessionStorage.getItem("activeUser")
+    console.log(sessionStorage)
+    let userId = +sessionStorage.getItem("activeuser")
+    console.log(userId)
     const card = Event.newEvent(eventName, eventDate, eventLocation, userId)
+    console.log(card)
     console.log("edit")
     API.editCard("events", id, card)
 },

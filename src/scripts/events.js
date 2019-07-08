@@ -30,7 +30,7 @@ export const Event = {
           let eventName = document.getElementById("event-name").value;
           let eventDate = document.getElementById("event-date").value;
           let eventLocation = document.getElementById("event-location").value;
-          let userId = sessionStorage.getItem("activeuser")
+          let userId = +sessionStorage.getItem("activeuser")
           fetch("http://localhost:8088/events", {
             // Replace "url" with your API's URL
             method: "POST",
@@ -51,7 +51,6 @@ export const Event = {
           document.querySelector("#listContainer").innerHTML = ""
           events.forEach(event =>
           {
-            console.log("event", event)
             const eventContainer = document.createElement("div")
             eventContainer.innerHTML = Comp.eventCard(event)
             Action.addCards("#listContainer", eventContainer)
@@ -64,13 +63,14 @@ export const Event = {
         console.log("APWOEIFJAOWEIJ")
         document.querySelector("#listContainer").addEventListener("click", event =>
         {
-          let id = event.target.id
-          if (event.target.id.startsWith("edit-"))
-          {
+        let id = event.target.id
+        if (event.target.id.startsWith("edit-"))
+        {
             Action.changeCard(event)
-          }
-          else if (event.target.id.startsWith("update-event-"))
-          {
+        }
+        else if (event.target.id.startsWith("update-event-"))
+        {
+                console.log("awejfoaiwejf", event)
             Action.editCard(event)
           }
           else if (event.target.id.startsWith("delete-"))
