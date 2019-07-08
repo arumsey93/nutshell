@@ -1,4 +1,5 @@
 import { Action } from "./action";
+import { Event } from "./events.js";
 
 console.log("API loaded")
 
@@ -22,7 +23,7 @@ export const API = {
       }
     })
     .then(res => res.json())
-    .then(() => Action.addEvent())
+    .then(() => Event.addEvent())
   },
 
   // Updates an entry with the passed id with the new values, then displays all the entries to the dom
@@ -35,7 +36,7 @@ export const API = {
     },
     body: JSON.stringify(card)
     })
-    .then(() => Action.addEvent())
+    .then(() => Event.addEvent())
   },
 
   postValue(resource, post) {
