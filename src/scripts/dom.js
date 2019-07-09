@@ -4,8 +4,8 @@ import {Event} from "./events.js"
 
 export const dom = {
   loadDashboard() {
-    Action.addToDom("#container", Comp.createDashboardContainer())
     let state = +sessionStorage.getItem("activeuser")
-    event.navHandler(state)
+    Action.addToDom("#container", Comp.createDashboardContainer())
+    Event.navHandler(state)
   }
 }
