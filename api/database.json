@@ -131,12 +131,6 @@
   ],
   "articles": [
     {
-      "title": "hey",
-      "synopsis": "man",
-      "url": "cool",
-      "id": 33
-    },
-    {
       "title": "",
       "synopsis": "",
       "url": "",
@@ -169,6 +163,16 @@
       "message": "hi",
       "user_ID": "4",
       "id": 5
+    },
+    {
+      "message": "hey",
+      "user_ID": "4",
+      "id": 6
+    },
+    {
+      "message": "dude",
+      "user_ID": "4",
+      "id": 7
     }
   ],
   "tasks": [

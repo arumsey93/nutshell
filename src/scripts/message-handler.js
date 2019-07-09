@@ -4,10 +4,12 @@ import { Comp } from "./comp.js"
 export function chatDOM() {
     console.log("hey")
     document.querySelector("#messages").addEventListener("click", () => {
+        document.querySelector("#listContainer").innerHTML = ""
       API.getValues("message")
         .then(data => {
           data.forEach(element => {
-            console.log(element)
+              console.log(element)
+
             document.querySelector("#listContainer").innerHTML += Comp.chatListComponent(element)
             })
             document.querySelector("#listContainer").addEventListener("click", (chat) => {
