@@ -1,7 +1,6 @@
 import { API } from "./api.js";
 import { Comp } from "./comp.js";
 import { Action } from "./action.js";
-import { chatDOM } from "./message-handler.js"
 import {dom} from "./dom.js"
 import {Event} from "./events.js"
 
@@ -13,9 +12,11 @@ API.getValues("users").then(array => {
 });
 
 if (sessionStorage.length === 0) {
-    Action.addToDom("#container", Comp.welcomeComponent())
-    document.getElementById("welcome-register").addEventListener("click", event => {
-      Action.addToDom("#container", Comp.registerComponent())
+  Action.addToDom("#container", Comp.welcomeComponent());
+  document
+    .getElementById("welcome-register")
+    .addEventListener("click", event => {
+      Action.addToDom("#container", Comp.registerComponent());
       Action.register(validationArray);
       Event.navHandler()
     })

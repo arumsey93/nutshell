@@ -3,7 +3,8 @@ import { Comp } from "./comp.js";
 import { Action } from "./action.js";
 import { article } from "./articleHandler.js";
 import {Event} from "./events.js"
-import {chatDOM} from "./message-handler.js"
+import { chatDOM } from "./message-handler.js"
+import {taskHandler} from "./taskHandler.js"
 
 export const dom = {
   loadDashboard() {
@@ -12,5 +13,6 @@ export const dom = {
     article.navHandler(state)
     Event.navHandler(state)
     chatDOM()
+    taskHandler.loadTasks()
   }
 }

@@ -27,6 +27,17 @@ export const API = {
       .then(response => response.json());
   },
 
+  editTask(name, id, card) {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(card)
+
+    }).then(data => data.json())
+  },
+
   getOneThing(resourceName, id) {
     return fetch(`http://localhost:8088/${resourceName}/${id}`)
     .then(data => data.json());
@@ -61,7 +72,7 @@ export const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(card)
-    }).then( (data) => data.json())
+    }).then(data => data.json())
   },
 
   postValue(resource, post) {

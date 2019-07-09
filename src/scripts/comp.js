@@ -121,7 +121,9 @@ export const Comp = {
     <input id="task-name" type="text" placeholder="Task Name">
     <input id="task-date" type="date">
     <textarea name="task-description" id="task-description" rows="4" columns="40"></textarea>
+    <button id ="taskButton">Create Task</button>
     </div>
+
     `
   },
 
@@ -145,14 +147,15 @@ export const Comp = {
 
   taskListComponent(task) {
     return `
-    <div id="task-list-component">
+    <fieldset><div id="taskList-${task.id}">
     <label for="taskList">Task List</label>
-    <p>Name ${task.name}</p>
-    <p>Date ${task.date}</p>
-    <p>Description ${task.description}</p>
-    <button id="task-delete">Delete</button>
-    <button id="task-edit">Edit</button>
-    </div>
+    <input type="hidden-edit" id="task-hidden" name="task-edit">
+    <p>Name: ${task.taskName}</p>
+    <p>Estimated Date Completion: ${task.taskDate}</p>
+    <p>Description: ${task.taskDescription}</p>
+    <label>Click to Complete</label>
+    <input type = "checkbox" id = delete-${task.id}>
+    </div></fieldset>
     `
   },
 

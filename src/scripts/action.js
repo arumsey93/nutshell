@@ -60,6 +60,22 @@ export const Action = {
     };
   },
 
+  newEvent(name, date, location) {
+    return {
+      name: name,
+      date: date,
+      location: location
+    };
+  },
+
+  newTask (taskName, taskDate, taskDescription) {
+    return {
+    taskName: taskName,
+    taskDate: taskDate,
+    taskDescription: taskDescription
+  };
+  },
+
   register(array) {
     document.querySelector("#register").addEventListener("click", () =>
     {
