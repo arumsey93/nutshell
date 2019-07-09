@@ -1,16 +1,15 @@
 console.log("Action loaded");
 import {Comp} from "./comp.js"
 import {API} from "./api.js"
+import {Event} from "./events.js"
+import {dom} from "./dom.js"
+
 let fetchUsers = (name) =>
 {
   fetch(`http://localhost:8088/users?username=${name}`)
     .then(data => data.json())
     .then(user => {
-      console.log("2")
         sessionStorage.setItem("activeuser", user[0].id)
-        Action.addToDom("#container", Comp.createDashboardContainer())
-        Action.createEvent()
-        API.displayFetch()
     })
 }
 
@@ -18,6 +17,10 @@ export const Action = {
 
   addToDom(container, component) {
     document.querySelector(container).innerHTML = component;
+  },
+
+  concatDom(container, component) {
+    document.querySelector(container).innerHTML += component;
   },
 
   addCards(container, component) {
@@ -40,12 +43,9 @@ export const Action = {
           } else if (user[0].password === logPassword)
             {
               sessionStorage.setItem("activeuser", user[0].id)
-              this.addToDom("#container", Comp.createDashboardContainer())
-              this.createEvent()
-              API.displayFetch()
+              dom.loadDashboard()
             }
-            else
-            {
+            else {
               alert("That password ain't right")
             }
         });
@@ -94,7 +94,6 @@ export const Action = {
       if (!userExists)
       {
           fetch("http://localhost:8088/users", {
-            // Replace "url" with your API's URL
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -107,71 +106,31 @@ export const Action = {
     });
   },
 
-  createEvent() {
-    console.log("awefawe")
-    document.querySelector("#create-event").addEventListener("click", () =>
-    {
-      let eventName = document.getElementById("event-name").value;
-      let eventDate = document.getElementById("event-date").value;
-      let eventLocation = document.getElementById("event-location").value;
-      console.log("hello")
-      console.log(eventName)
-      fetch("http://localhost:8088/events", {
-        // Replace "url" with your API's URL
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.newEvent(eventName, eventDate, eventLocation))
-      })
-      .then(returnedEvents => returnedEvents.json())
-      .then(() => {this.addEvent()})
-    })
+  changeCard(event) {
+      let id = event.target.id.split("-")
+      id = id[1]
+      let eventName = document.querySelector(`#eventName-${id}`).textContent;
+      let eventDate = document.querySelector(`#eventDate-${id}`).textContent;
+      let eventLocation = document.querySelector(`#eventLocation-${id}`).textContent;
+      const object = Event.newEvent(eventName, eventDate, eventLocation)
+      this.addToDom(`#edit-form-container-${id}`, Comp.eventEditCard(object, id))
   },
 
-  addEvent() {
-    API.getEvents()
-    .then(events =>
-    {
-      document.querySelector("#listContainer").innerHTML = ""
-      events.forEach(event =>
-      {
-        console.log("event", event)
-        const eventContainer = document.createElement("div")
-        eventContainer.innerHTML = Comp.eventCard(event)
-        this.addCards("#listContainer", eventContainer)
-      })
-      this.eventEvent()
-    })
-  },
+  editCard(event) {
+    let id = event.target.id.split("-")
+    id = id[2]
+    let eventName = document.querySelector(`#event-name-${id}`).value;
+    let eventDate = document.querySelector(`#event-date-${id}`).value;
+    let eventLocation = document.querySelector(`#event-location-${id}`).value;
+    let userId = +sessionStorage.getItem("activeuser")
+    const card = Event.newEvent(eventName, eventDate, eventLocation, userId)
+    API.editCard("events", id, card)
+},
 
-  eventEvent() {
-    console.log("APWOEIFJAOWEIJ")
-    document.querySelector("#listContainer").addEventListener("click", event =>
-    {
-      let id = event.target.id
-      if (event.target.id.startsWith("edit-"))
-      {
-        let eventName = document.querySelector("#event-name").value;
-        let eventDate = document.querySelector("#event-date").value;
-        let eventLocation = document.querySelector("#event-location").value;
-        const card = this.newEvent(eventName, eventDate, eventLocation)
-        console.log("edit")
-        id = id.split("-")
-        console.log(id[1])
-        API.editCard("events", id[1], card)
-      }
-      else if (event.target.id.startsWith("delete-"))
-      {
-        id = id.split("-")
-        API.deleteCard("events", id[1])
-      }
-
-    })
-
-  },
-
-  eventHandler(button, input, callbackFunc) {
-    document.querySelector(button).addEventListener(input, callbackFunc)
+  onClick(button, callbackFunc) {
+    document.querySelector(button).addEventListener("click", callbackFunc)
   }
 };
+
+
+{/* <div id="edit-form-container-${event.id}"></div> */}
