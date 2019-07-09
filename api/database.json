@@ -151,11 +151,24 @@
   ],
   "message": [
     {
-      "id": 1,
-      "title": "title",
-      "article": "article",
-      "user_id": 1,
-      "friend_id": 2
+      "message": "alex r\\",
+      "user_ID": "1",
+      "id": 2
+    },
+    {
+      "message": "hello",
+      "user_ID": "1",
+      "id": 3
+    },
+    {
+      "message": "doing",
+      "user_ID": "1",
+      "id": 4
+    },
+    {
+      "message": "hi",
+      "user_ID": "4",
+      "id": 5
     }
   ]
 }

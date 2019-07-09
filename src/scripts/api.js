@@ -17,7 +17,7 @@ export const API = {
     this.getValues("articles")
     this.getValues("messages")
   },
-  getValues(resourceName) {
+    getValues(resourceName) {
     return fetch(`http://localhost:8088/${resourceName}`)
       .then(response => response.json());
   },
@@ -25,6 +25,11 @@ export const API = {
   getEvents() {
     return fetch("http://localhost:8088/events")
       .then(response => response.json());
+  },
+
+  getOneThing(resourceName, id) {
+    return fetch(`http://localhost:8088/${resourceName}/${id}`)
+    .then(data => data.json());
   },
 
   deleteCard(name, id) {
@@ -44,10 +49,19 @@ export const API = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
-    },
-    body: JSON.stringify(card)
-    })
-    .then(() => Event.addEvent())
+      },
+      body: JSON.stringify(card)
+    }).then(() => Event.addEvent())
+  },
+
+  editMessage(name, id, card) {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(card)
+    }).then( (data) => data.json())
   },
 
   postValue(resource, post) {
@@ -69,13 +83,15 @@ export const API = {
     }).then(res => res.json())
   },
 
-  editValue(name, id, card) {
+  editValue(name, id, edit) {
     fetch(`http://localhost:8088/${name}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(card)
-    })
-  },
-}
+      body: JSON.stringify(edit)
+    }).then(data => data.json());
+  }
+};
+
+

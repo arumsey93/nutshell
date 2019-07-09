@@ -25,7 +25,6 @@ export const Event = {
       },
 
     createEvent() {
-        console.log("awefawe")
         document.querySelector("#create-event").addEventListener("click", () =>
         {
           let eventName = document.getElementById("event-name").value;

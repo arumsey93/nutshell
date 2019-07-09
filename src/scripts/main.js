@@ -1,8 +1,9 @@
-import {API} from "./api.js";
-import {Comp} from "./comp.js";
-import {Action} from "./action.js";
-import {Event} from "./events.js"
+import { API } from "./api.js";
+import { Comp } from "./comp.js";
+import { Action } from "./action.js";
+import { chatDOM } from "./message-handler.js"
 import {dom} from "./dom.js"
+import {Event} from "./events.js"
 
 let validationArray = [];
 
@@ -25,4 +26,5 @@ if (sessionStorage.length === 0) {
     })
 } else {
   dom.loadDashboard()
+  // chatDOM()
 }

@@ -12,11 +12,11 @@ export const Comp = {
     return `
     <h1>Nutshell</h1>
     <nav>
-      <button id="events">Events</button>
-      <button id="articles">Articles</button>
-      <button id="tasks">Tasks</button>
-      <button id="messages">Messages</button>
-      <button id="friends">Friends</button>
+    <button id="events">Events</button>
+    <button id="articles">Articles</button>
+    <button id="tasks">Tasks</button>
+    <button id="messages">Messages</button>
+    <button id="friends">Friends</button>
     </nav>
     <div id="formContainer"></div>
     <div id="listContainer"></div>
@@ -40,6 +40,25 @@ export const Comp = {
       <input id="login-password" type="text" placeholder="Password">
       <button id="log-in">Log In</button>
     </div>`;
+  },
+
+  createEventComponent() {
+    return `
+    <div id="formContainer">
+    <fieldset>
+    <label for="journalDate">Name</label>
+    <input type="text" name="eventName" id="event-name" required/>
+    <label for="journalConcepts">Date</label>
+    <input type="date" name="eventDate" id="event-date" required>
+    <label for="journalEntry">Location</label>
+    <input type="text" name="eventLocation" id="event-location" required>
+    <div class="eventcreate">
+      <input id="create-event" type="button" value="Create Event">
+    </div>
+  </fieldset>
+  </div>
+  <div id="listContainer"></div>
+    `
   },
 
   eventCard(event)
@@ -73,17 +92,24 @@ export const Comp = {
 
   chatFormComponent() {
     return `
+    <fieldset>
     <div id="chat-form-container">
       <label for="chat-form-container">Enter Your Message:</label>
       <textarea name="chat-form" id="chat-form" rows="5" columns="60"></textarea>
+      <input type="hidden" id="message-id">
+      <input type="hidden" id="edit-user-id">
       <button id="chatPostBtn">Send Message</button>
       </div>
+      </fieldset>
     `
   },
-
-  chatListComponent() {
+  chatListComponent(chat) {
     return `
-    <div id="chat-list-container">
+    <div id="chat-list-container-${chat.id}">
+    <p id="message-${chat.id}">${chat.message}</p>
+    <button id="chat-edit-${chat.id}">Edit</button>
+    <input type="hidden" id="message-${chat.id}">
+    <input type="hidden" id="edit-user-${chat.user_ID}">
     </div>
     `
   },
