@@ -3,11 +3,14 @@ console.log("Comp Loaded");
 export const Comp = {
   welcomeComponent() {
     return `
+    <h1>Nutshell</h1>
     <button id="welcome-register">Register</button>
     <button id="welcome-login">Log In</button>`;
   },
+
   createDashboardContainer() {
     return `
+    <h1>Nutshell</h1>
     <nav>
     <button id="events">Events</button>
     <button id="articles">Articles</button>
@@ -19,6 +22,7 @@ export const Comp = {
     <div id="listContainer"></div>
     `;
   },
+
   registerComponent() {
     return `
     <div id="register-container">
@@ -28,6 +32,7 @@ export const Comp = {
       <button id="register">Register</button>
     </div>`;
   },
+
   loginComponent() {
     return `
     <div id="login-container">
@@ -59,15 +64,30 @@ export const Comp = {
   eventCard(event)
   {
     return `
-            <fieldset>
-            <h1 class="name">${event.name}</h1>
-            <h3 class="date">${event.date}</h3>
-            <h2 class="location">${event.location}</h2>
-            <div class="button-container">
-              <button class="delete-event" id="delete-${event.id}">Delete</button>
-              <button class="edit-event" id="edit-${event.id}">Edit</button>
-            </div>
+            <fieldset id="edit-form-container-${event.id}">
+              <h1 class="name" id="eventName-${event.id}">${event.name}</h1>
+              <h3 class="date" id="eventDate-${event.id}">${event.date}</h3>
+              <h2 class="location" id="eventLocation-${event.id}">${event.location}</h2>
+              <div class="button-container">
+                <button class="delete-event" id="delete-${event.id}">Delete</button>
+                <button class="edit-event" id="edit-${event.id}">Edit</button>
+              </div>
             </fieldset>`
+  },
+
+  eventEditCard(object, id)
+  {
+    console.log(object, id)
+    return `
+              <label for="journalDate">Name</label>
+              <input type="text" name="eventName" id="event-name-${id}" value="${object.name}" required/>
+              <label for="journalConcepts">Date</label>
+              <input type="date" name="eventDate" id="event-date-${id}" value="${object.date}" required>
+              <label for="journalEntry">Location</label>
+              <input type="text" name="eventLocation" id="event-location-${id}" value="${object.location}" required>
+              <div class="eventcreate">
+                <input id="update-event-${id}" type="button" value="Update Event">
+              </div>`
   },
 
   chatFormComponent() {
@@ -93,6 +113,7 @@ export const Comp = {
     </div>
     `
   },
+
   taskFormComponent() {
     return `
     <div id="task-form-component">
@@ -103,6 +124,25 @@ export const Comp = {
     </div>
     `
   },
+
+  eventForm()
+  {
+    return `<div id="formContainer">
+          <fieldset>
+          <label for="journalDate">Name</label>
+          <input type="text" name="eventName" id="event-name" required/>
+          <label for="journalConcepts">Date</label>
+          <input type="date" name="eventDate" id="event-date" required>
+          <label for="journalEntry">Location</label>
+          <input type="text" name="eventLocation" id="event-location" required>
+          <div class="eventcreate">
+            <input id="create-event" type="button" value="Create Event">
+          </div>
+        </fieldset>
+        </div>
+        <div id="listContainer"></div>`
+  },
+
   taskListComponent(task) {
     return `
     <div id="task-list-component">
@@ -115,6 +155,7 @@ export const Comp = {
     </div>
     `
   },
+
   articleForm() {
     return `<div id="article-form">
       <input id ="articleFormTitle" type="text" placeholder="Title"/>
@@ -123,13 +164,22 @@ export const Comp = {
       <button id ="article-save">Post Article</button>
     </div>`
   },
+
+  articleEditForm() {
+    return `<div id="article-edit-form">
+      <input id="articleEditTitle" type="text" placeholder="Title"/>
+      <input id="articleEditSynopsis" type="text" placeholder="Synopsis"/>
+      <input id="articleEditUrl" type="text" placeholder="Url"/>
+      <button id="article-edit">Save Edit</button>
+    </div>`
+  },
   article(article) {
-    return `<div id="article-component">
-      <p>Title ${article.title}</p>
+    return `<div class="article-component" id="article-component-${article.id}">
+      <p>Title ${article.title} ${article.id}</p>
       <p>Synopsis ${article.synopsis}</p>
-      <p>url ${article.url}</p>
-      <button id="article-edit">Edit<button>
-      <button id="article-delete">Delete<button>
+      <a href="${article.url}">${article.url}</a></br>
+      <button id="article-edit-${article.id}">Edit</button>
+      <button id="article-delete-${article.id}">Delete</button>
     </div>`
   }
 };

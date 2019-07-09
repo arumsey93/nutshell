@@ -1,7 +1,8 @@
 import { API } from "./api.js"
 import { Comp } from "./comp.js"
 
-export function chatDOM () {
+export function chatDOM() {
+    console.log("hey")
     document.querySelector("#messages").addEventListener("click", () => {
       API.getValues("message")
         .then(data => {

@@ -1,19 +1,37 @@
 # Nutshell: The Information Dashboard
 
-Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
+## Intro
+Nutshell is a vanilla js dashboard displaying users with events, articles, tasks, messages and friends they are interested in. This app uses Webpack bundler to run http and json servers with npm.
+
+## Install
+1. Clone this repository
+1. Make a branch
+1. npm install
+1. npm start
+
+In your browser, visit 'localhost:8080'
+
+## Register / Login
+Once in at the welcome screen, create a new user or login as an existing user
+
+
+
+
+
+<!-- Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
 You will be utilizing all of the skills and concepts that you've learned up to this point in the course.
 
 1. Functions
-1. Databases/API
-1. Github
-1. Objects
-1. CSS
-1. Handling user events
-1. Factory functions
-1. Data entry/editing
-1. Modular code with Browserify
-1. Relational data
+2. Databases/API
+3. Github
+4. Objects
+5. CSS
+6. Handling user events
+7. Factory functions
+8. Data entry/editing
+9. Modular code with Browserify
+10. Relational data
 
 To start you off, here's an example of what the resources in your API should look like once it's populated with some data from your application.
 
@@ -77,4 +95,4 @@ sessionStorage.removeItem("activeUser")
 
 To help you along, here is a visualization of the features, and behaviors of the application to get you started.
 
-![nutshell features](./Nutshell.png)
+![nutshell features](./Nutshell.png) -->
