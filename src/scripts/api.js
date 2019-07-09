@@ -1,12 +1,25 @@
-import { Action } from "./action";
 import { Event } from "./events.js";
+import { Action } from "./action.js";
+import {Comp} from "./comp.js";
 
-console.log("API loaded")
+console.log("API loaded");
 
 export const API = {
-  getValues() {
-    return fetch("http://localhost:8088/users")
-      .then(response => response.json());
+  displayFetch() {
+    this.getValues("events")
+    .then(array => {
+      array.forEach(event => {
+        console.log(event)
+        Action.concatDom("#listContainer", Comp.eventCard(event))
+      })
+    })
+    this.getValues("tasks")
+    this.getValues("articles")
+    this.getValues("messages")
+  },
+  getValues(resourceName) {
+    return fetch(`http://localhost:8088/${resourceName}`)
+    .then(response => response.json());
   },
 
   getEvents() {
@@ -14,12 +27,11 @@ export const API = {
       .then(response => response.json());
   },
 
-  deleteCard (name, id) {
-    fetch(`http://localhost:8088/${name}/${id}`,
-    {
+  deleteCard(name, id) {
+    fetch(`http://localhost:8088/${name}/${id}`, {
       method: "DELETE",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json"
       }
     })
     .then(res => res.json())
@@ -27,11 +39,10 @@ export const API = {
   },
 
   // Updates an entry with the passed id with the new values, then displays all the entries to the dom
-  editCard (name, id, card)
-  {
+  editCard(name, id, card) {
     fetch(`http://localhost:8088/${name}/${id}`, {
-    method: "PUT",
-    headers: {
+      method: "PUT",
+      headers: {
         "Content-Type": "application/json"
     },
     body: JSON.stringify(card)
@@ -47,16 +58,16 @@ export const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(post)
-    })
+    });
   },
 
   deleteValue(remove) {
     return fetch(`http://localhost:8088/${remove.user_id}`, {
       method: "DELETE",
-      headers:{
+      headers: {
         "Content-Type": "application/json"
       }
-    })
+    });
   },
 
   editValue(edit) {
@@ -66,7 +77,6 @@ export const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(edit)
-    })
-      .then((data) => data.json())
+    }).then(data => data.json());
   }
-}
+};

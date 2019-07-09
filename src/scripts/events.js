@@ -11,6 +11,7 @@ export const Event = {
           Action.addToDom("#formContainer", Comp.eventForm());
           // Load articles; convert to js array
           this.addEvent()
+          this.createEvent()
           })
       },
 

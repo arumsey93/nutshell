@@ -6,6 +6,6 @@ export const dom = {
   loadDashboard() {
     Action.addToDom("#container", Comp.createDashboardContainer())
     let state = +sessionStorage.getItem("activeuser")
-    event.navHandler(state)
+    Event.navHandler(state)
   }
 }

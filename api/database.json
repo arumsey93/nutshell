@@ -39,12 +39,6 @@
   ],
   "events": [
     {
-      "name": "henlo",
-      "date": "",
-      "location": "henlo",
-      "id": 1
-    },
-    {
       "name": "oiwejf",
       "date": "2019-07-01",
       "location": "magog",
@@ -119,6 +113,20 @@
       "date": "",
       "location": "oaweijfpaiuwrbnp",
       "id": 13
+    },
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "user_id": 4,
+      "id": 14
+    },
+    {
+      "name": "hi",
+      "date": "",
+      "location": "",
+      "user_id": 4,
+      "id": 15
     }
   ],
   "articles": [
