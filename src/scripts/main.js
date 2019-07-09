@@ -18,12 +18,10 @@ if (sessionStorage.length === 0) {
     .addEventListener("click", event => {
       Action.addToDom("#container", Comp.registerComponent());
       Action.register(validationArray);
-      Event.navHandler()
     })
     document.getElementById("welcome-login").addEventListener("click", event => {
       Action.addToDom("#container", Comp.loginComponent())
       Action.logIn();
-      Event.navHandler()
     })
 } else {
   dom.loadDashboard()
