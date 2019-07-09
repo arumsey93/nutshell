@@ -1,12 +1,14 @@
-import { dom } from "./dom.js"
-import { API } from "./api.js"
-import { Action } from "./action.js"
-import { Comp } from "./comp.js"
+import {API} from "./api.js";
+import {Comp} from "./comp.js";
+import {Action} from "./action.js";
+import {Event} from "./events.js"
+import {dom} from "./dom.js"
 
 let validationArray = [];
 
 API.getValues("users").then(array => {
   validationArray = array;
+  console.log(validationArray)
 });
 
 if (sessionStorage.length === 0) {
@@ -14,10 +16,12 @@ if (sessionStorage.length === 0) {
     document.getElementById("welcome-register").addEventListener("click", event => {
       Action.addToDom("#container", Comp.registerComponent())
       Action.register(validationArray);
+      Event.navHandler()
     })
     document.getElementById("welcome-login").addEventListener("click", event => {
       Action.addToDom("#container", Comp.loginComponent())
       Action.logIn();
+      Event.navHandler()
     })
 } else {
   dom.loadDashboard()
