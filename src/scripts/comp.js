@@ -149,7 +149,7 @@ export const Comp = {
     return `
     <fieldset><div id="taskList-${task.id}">
     <label for="taskList">Task List</label>
-    <input type="hidden-edit" id="task-hidden" name="task-edit">
+    <input type="hidden" id="task-hidden" name="task-edit">
     <p>Name: ${task.taskName}</p>
     <p>Estimated Date Completion: ${task.taskDate}</p>
     <p>Description: ${task.taskDescription}</p>
