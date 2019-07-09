@@ -141,8 +141,7 @@ export const Comp = {
             <input id="create-event" type="button" value="Create Event">
           </div>
         </fieldset>
-        </div>
-        <div id="listContainer"></div>`
+        </div>`
   },
 
   taskListComponent(task) {

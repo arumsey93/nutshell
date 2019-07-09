@@ -108,7 +108,8 @@ export const Action = {
 
   changeCard(event) {
       let id = event.target.id.split("-")
-      id = id[1]
+    id = +id[1]
+    console.log(id)
       let eventName = document.querySelector(`#eventName-${id}`).textContent;
       let eventDate = document.querySelector(`#eventDate-${id}`).textContent;
       let eventLocation = document.querySelector(`#eventLocation-${id}`).textContent;

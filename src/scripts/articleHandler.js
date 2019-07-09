@@ -10,6 +10,7 @@ export const article = {
     console.log("hi")
     document.querySelector("#articles").addEventListener("click", () => {
       // Add form to dom
+      document.querySelector("#listContainer").innerHTML = ""
       Action.addToDom("#formContainer", Comp.articleForm());
       API.getValues("articles").then(data => {
         //Loop through array, +=ing each article
