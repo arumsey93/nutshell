@@ -139,15 +139,14 @@
   ],
   "message": [
     {
-      "id": 1,
-      "title": "title",
-      "article": "article",
-      "user_id": 1,
-      "friend_id": 2
+      "message": "alex alex",
+      "user_ID": "1",
+      "id": 2
     },
     {
-      "message": "jksdgjlkagn;lag",
-      "id": 2
+      "message": "henlo",
+      "user_ID": "1",
+      "id": 3
     }
   ]
 }

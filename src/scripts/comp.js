@@ -75,15 +75,19 @@ export const Comp = {
     <div id="chat-form-container">
       <label for="chat-form-container">Enter Your Message:</label>
       <textarea name="chat-form" id="chat-form" rows="5" columns="60"></textarea>
+      <input type="hidden" id="message-id">
+      <input type="hidden" id="edit-user-id">
       <button id="chatPostBtn">Send Message</button>
       </div>
     `
   },
   chatListComponent(chat) {
     return `
-    <div id="chat-list-container">
-    <p>${chat.message}</p>
-    <button id="chat-edit">Edit</button>
+    <div id="chat-list-container-${chat.id}">
+    <p id="message-${chat.id}">${chat.message}</p>
+    <button id="chat-edit-${chat.id}">Edit</button>
+    <input type="hidden" id="message-${chat.id}">
+    <input type="hidden" id="edit-user-${chat.user_ID}">
     </div>
     `
   },

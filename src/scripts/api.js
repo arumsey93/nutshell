@@ -16,9 +16,14 @@ export const API = {
     this.getValues("articles")
     this.getValues("messages")
   },
-  getValues(resourceName) {
+    getValues(resourceName) {
     return fetch(`http://localhost:8088/${resourceName}`)
     .then(response => response.json());
+  },
+
+  getOneThing(resourceName, id) {
+    return fetch(`http://localhost:8088/${resourceName}/${id}`)
+    .then(data => data.json());
   },
 
   deleteCard(name, id) {
@@ -40,7 +45,7 @@ export const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(card)
-    }).then(() => Action.addEvent());
+    }).then( (data) => data.json())
   },
 
   postValue(resource, post) {
