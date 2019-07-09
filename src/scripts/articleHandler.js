@@ -64,13 +64,14 @@ export const article = {
         if (id.startsWith("article-delete-")) {
           id = +id.split("-")[2]
           console.log("delete", id)
+          document.querySelector("#listContainer").innerHTML = ""
           API.deleteValue("articles", id)
             .then(() => {
-              document.querySelector("#listContainer").innerHTML = ""
-              API.getValues("articles").then(newData =>
+              API.getValues("articles").then(newData => {
+                document.querySelector("#listContainer").innerHTML = ""
                 newData.forEach(article =>
                   Action.concatDom("#listContainer", Comp.article(article))
-                )
+                )}
               )
           })
         }

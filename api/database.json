@@ -114,20 +114,6 @@
       "id": 34
     },
     {
-      "name": "joe",
-      "date": "",
-      "location": "lhfg",
-      "user_id": 4,
-      "id": 35
-    },
-    {
-      "name": "joe",
-      "date": "",
-      "location": "lhfg",
-      "user_id": 4,
-      "id": 37
-    },
-    {
       "name": "post",
       "date": "2019-07-10",
       "location": "thisbuddy",
@@ -137,21 +123,27 @@
   ],
   "articles": [
     {
-      "title": "hi",
-      "synopsis": "joe",
-      "url": "there",
+      "title": "",
+      "synopsis": "",
+      "url": "",
       "id": 12
     },
     {
-      "title": "hey",
-      "synopsis": "there",
-      "url": "guys",
+      "title": "",
+      "synopsis": "",
+      "url": "",
       "id": 13
+    },
+    {
+      "title": "",
+      "synopsis": "",
+      "url": "",
+      "id": 14
     }
   ],
   "message": [
     {
-      "message": "alex r\\",
+      "message": "ggg",
       "user_ID": "1",
       "id": 2
     },
@@ -417,6 +409,34 @@
       "taskDescription": "today is good",
       "isComplete": true,
       "id": 33
+    },
+    {
+      "taskName": "ikuhlgkhaerg",
+      "taskDate": "",
+      "taskDescription": "kaheglkhaerrg",
+      "isComplete": true,
+      "id": 34
+    },
+    {
+      "taskName": "gi",
+      "taskDate": "2019-07-09",
+      "taskDescription": "lkjahfglkae",
+      "isComplete": true,
+      "id": 35
+    },
+    {
+      "taskName": "",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": true,
+      "id": 36
+    },
+    {
+      "taskName": "",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": true,
+      "id": 37
     }
   ]
 }

@@ -1,3 +1,6 @@
+//Author: Adam Knowles
+// Handle tasks
+
 import { API } from "./api.js";
 import { Comp } from "./comp.js";
 import { Action } from "./action.js";

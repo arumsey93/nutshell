@@ -57,7 +57,6 @@ export const Comp = {
     </div>
   </fieldset>
   </div>
-  <div id="listContainer"></div>
     `
   },
 

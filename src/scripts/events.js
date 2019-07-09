@@ -1,4 +1,7 @@
-import {Comp} from "./comp.js"
+//Author: Daniel Krusch
+// Handles events
+
+import { Comp } from "./comp.js"
 import {API} from "./api.js"
 import {Action} from "./action.js";
 

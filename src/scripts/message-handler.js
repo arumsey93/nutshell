@@ -1,3 +1,6 @@
+// Author: Alex Rumsey
+//Handles messages
+
 import { API } from "./api.js"
 import { Comp } from "./comp.js"
 
