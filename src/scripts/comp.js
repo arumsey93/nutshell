@@ -177,8 +177,8 @@ export const Comp = {
   },
   article(article) {
     return `<div class="article-component" id="article-component-${article.id}">
-      <p>Title ${article.title} ${article.id}</p>
-      <p>Synopsis ${article.synopsis}</p>
+      <p>${article.title}</p>
+      <p>${article.synopsis}</p>
       <a href="${article.url}">${article.url}</a></br>
       <button id="article-edit-${article.id}">Edit</button>
       <button id="article-delete-${article.id}">Delete</button>

@@ -44,7 +44,7 @@ export const API = {
   },
 
   deleteCard(name, id) {
-    fetch(`http://localhost:8088/${name}/${id}`, {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -56,7 +56,7 @@ export const API = {
 
   // Updates an entry with the passed id with the new values, then displays all the entries to the dom
   editCard(name, id, card) {
-    fetch(`http://localhost:8088/${name}/${id}`, {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -86,7 +86,7 @@ export const API = {
   },
 
   deleteValue(name, id) {
-    fetch(`http://localhost:8088/${name}/${id}`, {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -95,7 +95,7 @@ export const API = {
   },
 
   editValue(name, id, edit) {
-    fetch(`http://localhost:8088/${name}/${id}`, {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

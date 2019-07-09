@@ -19,8 +19,9 @@ export const article = {
         })
       })
       this.enablePost();
+
       this.enableDelete();
-      this.enableEdit()
+      // this.enableEdit()
     });
   },
 
@@ -43,13 +44,16 @@ export const article = {
         synopsis: document.querySelector("#articleFormSynopsis").value,
         url: document.querySelector("#articleFormUrl").value
       };
-      API.postValue("articles", articleObj);
-      document.querySelector("#listContainer").innerHTML = "";
-      API.getValues("articles").then(newData =>
-        newData.forEach(article =>
-          Action.concatDom("#listContainer", Comp.article(article))
-        )
-      );
+      API.postValue("articles", articleObj)
+        .then(() => {
+          document.querySelector("#listContainer").innerHTML = ""
+          API.getValues("articles").then(newData =>
+            newData.forEach(article =>
+              Action.concatDom("#listContainer", Comp.article(article))
+            )
+          )
+      })
+
     });
   },
 
@@ -61,41 +65,66 @@ export const article = {
           id = +id.split("-")[2]
           console.log("delete", id)
           API.deleteValue("articles", id)
-          document.querySelector("#listContainer").innerHTML = ""
-          API.getValues("articles").then(newData =>
-            newData.forEach(article =>
-              Action.concatDom("#listContainer", Comp.article(article))
-            )
-          );
+            .then(() => {
+              document.querySelector("#listContainer").innerHTML = ""
+              API.getValues("articles").then(newData =>
+                newData.forEach(article =>
+                  Action.concatDom("#listContainer", Comp.article(article))
+                )
+              )
+          })
+        }
+      else if (id.startsWith("article-edit-")) {
+          id = +id.split("-")[2]
+          console.log("edit", id);
+          document.querySelector(`#article-component-${id}`).innerHTML = Comp.articleEditForm()
+          document.querySelector("#article-edit").addEventListener("click", () => {
+            let newObj = {
+              title: document.querySelector("#articleEditTitle").value,
+              synopsis: document.querySelector("#articleEditSynopsis").value,
+              url: document.querySelector("#articleEditUrl").value
+            }
+            console.log(newObj)
+            API.editValue("articles", id, newObj)
+              .then(() => {
+                document.querySelector("#listContainer").innerHTML = ""
+                API.getValues("articles").then(newData => {
+                  console.log(newData)
+                  newData.forEach(article => Action.concatDom("#listContainer", Comp.article(article)))
+                })
+
+            })
+
+          })
         }
       });
-  },
+  }
 
   // Edit Handler
-  enableEdit() {
-    document.querySelector("#container").addEventListener("click", event => {
-      let id = event.target.id;
-      if (id.startsWith("article-edit-")) {
-        id = +id.split("-")[2]
-        console.log("edit", id);
-        document.querySelector(`#article-component-${id}`).innerHTML = ""
-        document.querySelector(`#article-component-${id}`).innerHTML = Comp.articleEditForm()
-        document.querySelector("#article-edit").addEventListener("click", () => {
-          let newObj = {
-            title: document.querySelector("#articleEditTitle").value,
-            synopsis: document.querySelector("#articleEditSynopsis").value,
-            url: document.querySelector("#articleEditUrl").value
-          }
-          console.log(newObj)
-          API.editValue("articles", id, newObj)
-          document.querySelector("#listContainer").innerHTML = ""
-          API.getValues("articles").then(newData => {
-            console.log(newData)
-            newData.forEach(article => Action.concatDom("#listContainer", Comp.article(article)))
-          })
+  // enableEdit() {
+  //   document.querySelector("#container").addEventListener("click", event => {
+  //     let id = event.target.id;
+  //     if (id.startsWith("article-edit-")) {
+  //       id = +id.split("-")[2]
+  //       console.log("edit", id);
+  //       document.querySelector(`#article-component-${id}`).innerHTML = ""
+  //       document.querySelector(`#article-component-${id}`).innerHTML = Comp.articleEditForm()
+  //       document.querySelector("#article-edit").addEventListener("click", () => {
+  //         let newObj = {
+  //           title: document.querySelector("#articleEditTitle").value,
+  //           synopsis: document.querySelector("#articleEditSynopsis").value,
+  //           url: document.querySelector("#articleEditUrl").value
+  //         }
+  //         console.log(newObj)
+  //         API.editValue("articles", id, newObj)
+  //         document.querySelector("#listContainer").innerHTML = ""
+  //         API.getValues("articles").then(newData => {
+  //           console.log(newData)
+  //           newData.forEach(article => Action.concatDom("#listContainer", Comp.article(article)))
+  //         })
 
-        })
-      }
-    });
-  }
+  //       })
+  //     }
+  //   });
+  // }
 };

@@ -101,7 +101,8 @@ export const Action = {
             body: JSON.stringify(this.newUser(regname, regemail, regpassword))
           })
           .then(returnedUsers => returnedUsers.json())
-          .then(() => {fetchUsers(regname)})
+          .then(() => { fetchUsers(regname) })
+          dom.loadDashboard()
       }
     });
   },
