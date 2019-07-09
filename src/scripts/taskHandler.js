@@ -4,10 +4,10 @@ import { Action } from "./action.js";
 
 export const taskHandler = {
   addTasks() {
-    document.querySelector("#listContainer").innerHTML = "";
-    fetch("http://localhost:8088/tasks?isComplete=false")
-      .then(data => data.json())
-      .then(newData => {
+     fetch("http://localhost:8088/tasks?isComplete=false")
+     .then(data => data.json())
+     .then(newData => {
+      document.querySelector("#listContainer").innerHTML = ""
         console.log(newData);
         newData.forEach(task => {
           // document.querySelector("#listContainer").innerHTML = Comp.taskListComponent(task);
