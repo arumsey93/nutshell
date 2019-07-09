@@ -1,3 +1,6 @@
+//Author: Adam Knowles
+// Handle tasks
+
 import { API } from "./api.js";
 import { Comp } from "./comp.js";
 import { Action } from "./action.js";
@@ -6,8 +9,11 @@ export const taskHandler = {
   addTasks() {
      fetch("http://localhost:8088/tasks?isComplete=false")
      .then(data => data.json())
-     .then(newData => {
-      document.querySelector("#listContainer").innerHTML = ""
+       .then(newData => {
+         document.querySelector("#listContainer").innerHTML = ""
+        //  let old_element = document.getElementById("listContainer");
+        //  let new_element = old_element.cloneNode(true);
+        //  old_element.parentNode.replaceChild(new_element, old_element);
         console.log(newData);
         newData.forEach(task => {
           // document.querySelector("#listContainer").innerHTML = Comp.taskListComponent(task);
@@ -52,6 +58,9 @@ export const taskHandler = {
 
       // taskContainer.innerHTML = "";
     });
+  },
+
+  checked() {
     document
       .querySelector("#listContainer")
       .addEventListener("change", event => {
@@ -81,11 +90,13 @@ export const taskHandler = {
   },
   //when nav task button clicked, switches to task page
   loadTasks() {
+    console.log("number one")
     document.querySelector("#tasks").addEventListener("click", () => {
       this.addTasks();
       console.log("task button clicked");
       Action.addToDom("#formContainer", Comp.taskFormComponent());
       this.createTask();
+      this.checked()
     });
   }
 };

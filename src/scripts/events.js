@@ -1,4 +1,7 @@
-import {Comp} from "./comp.js"
+//Author: Daniel Krusch
+// Handles events
+
+import { Comp } from "./comp.js"
 import {API} from "./api.js"
 import {Action} from "./action.js";
 
@@ -8,10 +11,12 @@ export const Event = {
         // When articles button clicked
         document.querySelector("#events").addEventListener("click", () => {
           // Add form to dom
+          document.querySelector("#listContainer").innerHTML = ""
           Action.addToDom("#formContainer", Comp.eventForm());
           // Load articles; convert to js array
           this.addEvent()
           this.createEvent()
+          this.eventEvent()
           })
       },
 
@@ -55,7 +60,6 @@ export const Event = {
             eventContainer.innerHTML = Comp.eventCard(event)
             Action.addCards("#listContainer", eventContainer)
           })
-          this.eventEvent()
         })
       },
 
@@ -66,6 +70,7 @@ export const Event = {
         let id = event.target.id
         if (event.target.id.startsWith("edit-"))
         {
+          console.log("hey")
             Action.changeCard(event)
         }
         else if (event.target.id.startsWith("update-event-"))

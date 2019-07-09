@@ -1,13 +1,18 @@
+// Author: Alex Rumsey
+//Handles messages
+
 import { API } from "./api.js"
 import { Comp } from "./comp.js"
 
 export function chatDOM() {
     console.log("hey")
     document.querySelector("#messages").addEventListener("click", () => {
+        document.querySelector("#listContainer").innerHTML = ""
+        console.log(document.querySelector("#listContainer"))
       API.getValues("message")
         .then(data => {
           data.forEach(element => {
-            console.log(element)
+              console.log(element)
             document.querySelector("#listContainer").innerHTML += Comp.chatListComponent(element)
             })
             document.querySelector("#listContainer").addEventListener("click", (chat) => {
