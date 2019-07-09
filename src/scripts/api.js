@@ -48,6 +48,16 @@ export const API = {
     }).then( (data) => data.json())
   },
 
+  editMessage(name, id, card) {
+    return fetch(`http://localhost:8088/${name}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(card)
+    }).then( (data) => data.json())
+  },
+
   postValue(resource, post) {
     // return fetch(`http://localhost:8088/${resource}/${post.user_id}`, {
     return fetch(`http://localhost:8088/${resource}`, {
@@ -78,3 +88,5 @@ export const API = {
     }).then(data => data.json());
   }
 };
+
+

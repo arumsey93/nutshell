@@ -72,6 +72,7 @@ export const Comp = {
 
   chatFormComponent() {
     return `
+    <fieldset>
     <div id="chat-form-container">
       <label for="chat-form-container">Enter Your Message:</label>
       <textarea name="chat-form" id="chat-form" rows="5" columns="60"></textarea>
@@ -79,6 +80,7 @@ export const Comp = {
       <input type="hidden" id="edit-user-id">
       <button id="chatPostBtn">Send Message</button>
       </div>
+      </fieldset>
     `
   },
   chatListComponent(chat) {

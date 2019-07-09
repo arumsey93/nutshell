@@ -33,10 +33,12 @@ export function chatDOM () {
                            return newObject;
                        })
                        .then(res => {
+                           console.log(res)
                            res.message = document.getElementById(`chat-form-edit-${messageId}`).value
+                           console.log(res)
                            return res;
                        })
-                       .then(res => API.editCard("message", messageId, res))
+                       .then(res => API.editMessage("message", messageId, res))
                        .then( () => {{API.getValues("message")
                        .then(data => {
                            document.querySelector("#listContainer").innerHTML = ""
@@ -74,41 +76,14 @@ export function chatDOM () {
     })
 }
 
-// function addMessage () {
-//     API.getValues("message")
-//     .then(message => {
-//         console.log(message)
-//         document.querySelector("#listContainer").innerHTML = ""
-//         message.forEach(chat => {
-//             chatEditComponent(chat)
-//         })
-//     })
-// }
-
-// const chatEditComponent = (chat) => {
-//      let chatEditDiv = document.createElement("div")
-//      chatEditDiv.setAttribute("id", `editChatContainer-${chat.id}`)
-// }
-
 function chatEditForm(message) {
    return `
+   <fieldset>
    <label for="chat-form-edit-container">Enter Your Message:</label>
    <textarea name="chat-form-edit" id="chat-form-edit-${message.id}" rows="5" columns="60">${message.message}</textarea>
    <input type="hidden" id="message-id" value=${message.id}>
    <input type="hidden" id="edit-user-id" value=${message.user_ID}>
    <button id="edit-form-btn-${message.id}">Save</button>
+   </fieldset
    `
 }
-
-// function chatEditDOM(editContainer, editForm) {
-//     document.querySelector(`#editFormContainer-${editContainer}`).innerHTML = editForm
-//     document.querySelector("#edit-form-btn").addEventListener("click", () => {
-//         debugger;
-//         API.getOneThing("message", document.querySelector("#message-id").value)
-//         .then(messageObj => {
-//             messageObj.message = document.querySelector("#chat-form-edit").value
-//             API.editCard("message", message.id, messageObj)
-//         })
-//     })
-// }
-
