@@ -1,8 +1,6 @@
 import { API } from "./api.js";
 import { Comp } from "./comp.js";
 import { Action } from "./action.js";
-import {taskHandler} from "./taskHandler.js"
-import { chatDOM } from "./message-handler.js"
 import {dom} from "./dom.js"
 import {Event} from "./events.js"
 

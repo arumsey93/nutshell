@@ -255,6 +255,13 @@
       "taskDescription": "nope",
       "isComplete": true,
       "id": 12
+    },
+    {
+      "taskName": "",
+      "taskDate": "",
+      "taskDescription": "",
+      "isComplete": true,
+      "id": 13
     }
   ]
 }

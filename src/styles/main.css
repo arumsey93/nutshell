@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-/* #taskList-1 {
-    background-color: blue;
-}  */
-=======
 body {
   font-family: Verdana, sans-serif;
   background: rgb(20, 20, 20);
@@ -26,4 +21,3 @@ button {
 .card {
   border:1px dotted green;
 }
->>>>>>> master
