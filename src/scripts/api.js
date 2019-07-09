@@ -1,3 +1,4 @@
+import { Event } from "./events.js";
 import { Action } from "./action.js";
 import {Comp} from "./comp.js";
 
@@ -6,19 +7,24 @@ console.log("API loaded");
 export const API = {
   displayFetch() {
     this.getValues("events")
-    .then(array => {
-      array.forEach(event => {
-        console.log(event)
-        Action.concatDom("#listContainer", Comp.eventCard(event))
+      .then(array => {
+        array.forEach(event => {
+          console.log(event)
+          Action.concatDom("#listContainer", Comp.eventCard(event))
+        })
       })
-    })
     this.getValues("tasks")
     this.getValues("articles")
     this.getValues("messages")
   },
   getValues(resourceName) {
     return fetch(`http://localhost:8088/${resourceName}`)
-    .then(response => response.json());
+      .then(response => response.json());
+  },
+
+  getEvents() {
+    return fetch("http://localhost:8088/events")
+      .then(response => response.json());
   },
 
   deleteCard(name, id) {
@@ -28,8 +34,8 @@ export const API = {
         "Content-Type": "application/json"
       }
     })
-      .then(res => res.json())
-      .then(() => Action.addEvent());
+    .then(res => res.json())
+    .then(() => Event.addEvent())
   },
 
   // Updates an entry with the passed id with the new values, then displays all the entries to the dom
@@ -38,13 +44,13 @@ export const API = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(card)
-    }).then(() => Action.addEvent());
+    },
+    body: JSON.stringify(card)
+    })
+    .then(() => Event.addEvent())
   },
 
   postValue(resource, post) {
-    // return fetch(`http://localhost:8088/${resource}/${post.user_id}`, {
     return fetch(`http://localhost:8088/${resource}`, {
       method: "POST",
       headers: {
@@ -54,22 +60,22 @@ export const API = {
     });
   },
 
-  deleteValue(remove) {
-    return fetch(`http://localhost:8088/${remove.user_id}`, {
+  deleteValue(name, id) {
+    fetch(`http://localhost:8088/${name}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       }
-    });
+    }).then(res => res.json())
   },
 
-  editValue(edit) {
-    return fetch(`http://localhost:8088/${edit.user_id}`, {
+  editValue(name, id, card) {
+    fetch(`http://localhost:8088/${name}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(edit)
-    }).then(data => data.json());
-  }
-};
+      body: JSON.stringify(card)
+    })
+  },
+}
